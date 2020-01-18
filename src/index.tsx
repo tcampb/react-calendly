@@ -2,22 +2,22 @@
  * @class ExampleComponent
  */
 
-import * as React from 'react'
+import * as React from "react";
+import { PopupText } from "./components/PopupText";
 
-import styles from './styles.css'
-
-export type Props = { text: string }
+export type Props = { text: string };
 
 export default class ExampleComponent extends React.Component<Props> {
   render() {
-    const {
-      text
-    } = this.props
-
     return (
-      <div className={styles.test}>
-        Example Component: {text}
-      </div>
-    )
+      // <PopupWidget
+      //   url={"https://calendly.com/tcampb30/phone-call"}
+      //   color={"blue"}
+      //   text={"a"}
+      //   textColor={"white"}
+      //   branding={false}
+      // />
+      <PopupText url={"https://calendly.com/tcampb30/phone-call"} text={"a"} />
+    );
   }
 }
