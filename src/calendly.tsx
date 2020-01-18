@@ -1,4 +1,4 @@
-import { Props as PopupWidgetOptions } from "./components/PopupWidget";
+import { Props as BadgeWidgetOptions } from "./components/PopupWidget";
 import {
   CALENDLY_SCRIPT_SOURCE,
   CALENDLY_STYLESHEET_SOURCE
@@ -9,7 +9,7 @@ export interface ICalendly {
   showPopupWidget(url: string): void;
   closePopupWidget(): void;
   destroyBadgeWidget(): void;
-  initBadgeWidget(opts: PopupWidgetOptions): void;
+  initBadgeWidget(opts: BadgeWidgetOptions): void;
   initPopupWidget(opts: { url: string }): void;
 }
 
