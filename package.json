@@ -1,6 +1,6 @@
 {
   "name": "react-calendly",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "Calendly integration for React apps",
   "author": "tcampb",
   "license": "MIT",
@@ -19,6 +19,7 @@
     "start": "rollup -c -w",
     "prepare": "npm run build",
     "predeploy": "cd example && npm install && npm run build",
+    "postinstall": "node ",
     "deploy": "gh-pages -d example/build"
   },
   "dependencies": {},
