@@ -1,21 +1,28 @@
 import * as React from "react";
-import Calendly, { ICalendly, loadScript, loadStyleSheet } from "../calendly";
+import { loadScript, loadStyleSheet } from "../calendly";
 
 export interface Props {
   url: string;
   text: string;
-  color: string;
-  textColor: string;
-  branding: boolean;
+  color?: string;
+  textColor?: string;
+  branding?: boolean;
 }
+
+const defaultProps: Partial<Props> = {
+  branding: false,
+  color: "#00a2ff",
+  textColor: "'#ffffff"
+};
 
 export class PopupWidget extends React.Component<Props> {
   componentDidMount() {
     const onLoad = () => {
       const options = {
+        ...defaultProps,
         ...this.props
       };
-      Calendly.initBadgeWidget(options);
+      window.Calendly.initBadgeWidget(options);
     };
 
     loadScript(onLoad);
@@ -23,8 +30,8 @@ export class PopupWidget extends React.Component<Props> {
   }
 
   componentWillUnmount() {
-    (Calendly as ICalendly).destroyBadgeWidget();
-    (Calendly as ICalendly).closePopupWidget();
+    window.Calendly.destroyBadgeWidget();
+    window.Calendly.closePopupWidget();
   }
 
   render() {
