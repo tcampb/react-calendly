@@ -12,7 +12,7 @@ export interface Props {
 const defaultProps: Partial<Props> = {
   branding: false,
   color: "#00a2ff",
-  textColor: "'#ffffff"
+  textColor: "#ffffff"
 };
 
 export class PopupWidget extends React.Component<Props> {
