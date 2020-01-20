@@ -1,7 +1,7 @@
 import * as React from "react";
-import { loadScript } from "../calendly";
+import { loadScript } from "../../calendly";
 
-interface Props {
+export interface Props {
   url: string;
   styles?: React.CSSProperties | undefined;
 }

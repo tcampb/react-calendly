@@ -1,5 +1,5 @@
 import * as React from "react";
-import { loadScript, loadStyleSheet } from "../calendly";
+import { loadScript, loadStyleSheet } from "../../calendly";
 
 export interface Props {
   url: string;
