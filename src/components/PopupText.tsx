@@ -1,5 +1,9 @@
 import * as React from "react";
 import { loadScript, loadStyleSheet } from "../calendly";
+import {
+  CALENDLY_SCRIPT_SOURCE,
+  CALENDLY_STYLESHEET_SOURCE
+} from "../constants";
 
 interface Props {
   url: string;
@@ -17,8 +21,12 @@ const createClickHandler = (url: string) => (
 
 export class PopupText extends React.Component<Props> {
   componentDidMount() {
-    loadScript();
-    loadStyleSheet();
+    if (!document.querySelector(`script[src="${CALENDLY_SCRIPT_SOURCE}"]`)) {
+      loadScript();
+    }
+    if (!document.querySelector(`link[href="${CALENDLY_STYLESHEET_SOURCE}"]`)) {
+      loadStyleSheet();
+    }
   }
 
   componentWillUnmount() {
