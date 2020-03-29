@@ -43,7 +43,6 @@
     "@types/node": "^13.9.5",
     "@types/react": "^16.3.13",
     "@types/react-dom": "^16.0.5",
-    "awesome-typescript-loader": "^5.2.1",
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.5",
     "babel-runtime": "^6.26.0",
@@ -53,7 +52,6 @@
     "mini-css-extract-plugin": "^0.9.0",
     "prettier": "2.0.2",
     "react": "^16.4.1",
-    "react-docgen-typescript-webpack-plugin": "^1.1.0",
     "react-dom": "^16.4.1",
     "react-scripts": "3.3.0",
     "rollup": "^0.62.0",
@@ -63,7 +61,9 @@
     "rollup-plugin-peer-deps-external": "^2.2.0",
     "rollup-plugin-url": "^1.4.0",
     "ts-jest": "^24.3.0",
-    "typescript": "^3.7.5"
+    "typescript": "^3.7.5",
+    "react-docgen-typescript-loader": "^3.7.1",
+    "ts-loader": "^6.2.2"
   },
   "files": [
     "dist"
