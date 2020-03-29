@@ -1,7 +1,7 @@
 import { Props as BadgeWidgetOptions } from "./components/PopupWidget/PopupWidget";
 import {
   CALENDLY_SCRIPT_SOURCE,
-  CALENDLY_STYLESHEET_SOURCE
+  CALENDLY_STYLESHEET_SOURCE,
 } from "./constants";
 
 export interface ICalendly {
@@ -33,7 +33,3 @@ export const loadStyleSheet = () => {
   link.href = CALENDLY_STYLESHEET_SOURCE;
   document.body.appendChild(link);
 };
-
-const Calendly = window ? window.Calendly : {};
-
-export default Calendly as ICalendly;
