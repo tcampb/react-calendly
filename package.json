@@ -18,8 +18,8 @@
     "build": "rollup -c",
     "start": "rollup -c -w",
     "prepare": "npm run build",
-    "predeploy": "cd example && npm install && npm run build",
-    "deploy": "gh-pages -d example/build",
+    "predeploy": "npm install && npm run build-storybook",
+    "deploy": "gh-pages -d storybook-static",
     "storybook": "start-storybook -p 9001 -c .storybook ",
     "build-storybook": "build-storybook"
   },
