@@ -1,11 +1,11 @@
 import * as React from "react";
-import { loadScript, loadStyleSheet } from "../calendly";
+import { loadScript, loadStyleSheet } from "../../calendly";
 import {
   CALENDLY_SCRIPT_SOURCE,
-  CALENDLY_STYLESHEET_SOURCE
-} from "../constants";
+  CALENDLY_STYLESHEET_SOURCE,
+} from "../../constants";
 
-interface Props {
+export interface Props {
   url: string;
   text: string;
 }
@@ -15,7 +15,7 @@ const createClickHandler = (url: string) => (
 ) => {
   e.preventDefault();
   return window.Calendly.initPopupWidget({
-    url
+    url,
   });
 };
 

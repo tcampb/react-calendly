@@ -1,4 +1,4 @@
-import { Props as BadgeWidgetOptions } from "./components/PopupWidget";
+import { Props as BadgeWidgetOptions } from "./components/PopupWidget/PopupWidget";
 import {
   CALENDLY_SCRIPT_SOURCE,
   CALENDLY_STYLESHEET_SOURCE

@@ -10,37 +10,9 @@
 npm install --save react-calendly
 ```
 
-## Usage
+## Documentation
 
-### Components
-
-- Inline
-- PopupText
-- PopupWidget
-
-#### Inline
-
-| Property | Type                | Required | Default                                |
-| -------- | ------------------- | -------- | -------------------------------------- |
-| url      | string              | true     | -                                      |
-| styles   | React.CSSProperties | false    | { minWidth: "320px", height: "630px" } |
-
-#### PopupText
-
-| Property | Type   | Required | Default |
-| -------- | ------ | -------- | ------- |
-| url      | string | true     | -       |
-| text     | string | true     | -       |
-
-#### PopupWidget
-
-| Property  | Type    | Required | Default |
-| --------- | ------- | -------- | ------- |
-| url       | string  | true     | -       |
-| text      | string  | true     | -       |
-| color     | string  | false    | #00a2ff |
-| textColor | string  | false    | #ffffff |
-| branding  | boolean | false    | false   |
+https://tcampb.github.io/react-calendly
 
 ## License
 
