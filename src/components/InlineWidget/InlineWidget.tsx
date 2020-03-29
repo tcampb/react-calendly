@@ -1,6 +1,5 @@
 import * as React from "react";
 import { loadScript } from "../../calendly";
-import { CALENDLY_SCRIPT_SOURCE } from "../../constants";
 
 export interface Props {
   url: string;
@@ -14,9 +13,7 @@ const defaultStyles = {
 
 export class InlineWidget extends React.Component<Props> {
   componentDidMount() {
-    if (!document.querySelector(`script[src="${CALENDLY_SCRIPT_SOURCE}"]`)) {
-      loadScript();
-    }
+    loadScript();
   }
 
   render() {
