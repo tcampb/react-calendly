@@ -1,5 +1,6 @@
 import * as React from "react";
 import { loadScript } from "../../calendly";
+import { CALENDLY_SCRIPT_SOURCE } from "../../constants";
 
 export interface Props {
   url: string;
@@ -12,8 +13,22 @@ const defaultStyles = {
 };
 
 export class InlineWidget extends React.Component<Props> {
+  private readonly widgetParentContainerRef: React.RefObject<HTMLDivElement>;
+
+  constructor(props: Props) {
+    super(props);
+    this.widgetParentContainerRef = React.createRef<HTMLDivElement>();
+  }
+
   componentDidMount() {
-    loadScript();
+    if (!document.querySelector(`script[src="${CALENDLY_SCRIPT_SOURCE}"]`)) {
+      loadScript();
+    } else {
+      window.Calendly.initInlineWidget({
+        url: this.props.url,
+        parentElement: this.widgetParentContainerRef.current!
+      })
+    }
   }
 
   render() {
@@ -22,6 +37,7 @@ export class InlineWidget extends React.Component<Props> {
         className="calendly-inline-widget"
         style={this.props.styles || defaultStyles}
         data-url={this.props.url}
+        ref={this.widgetParentContainerRef}
       ></div>
     );
   }

@@ -4,8 +4,12 @@ import {
   CALENDLY_STYLESHEET_SOURCE,
 } from "./constants";
 
+
 export interface ICalendly {
-  createInlineWidgets(): void;
+  initInlineWidget(options: {
+    url: string;
+    parentElement: HTMLElement;
+  }): void;
   showPopupWidget(url: string): void;
   closePopupWidget(): void;
   destroyBadgeWidget(): void;
