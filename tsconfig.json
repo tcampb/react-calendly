@@ -20,5 +20,5 @@
     "noUnusedParameters": true
   },
   "include": ["src"],
-  "exclude": ["node_modules", "build", "dist", "rollup.config.js", "src/stories"]
+  "exclude": ["node_modules", "build", "dist", "rollup.config.js", "**/*.stories.tsx"]
 }
