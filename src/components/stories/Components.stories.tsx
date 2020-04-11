@@ -5,15 +5,15 @@ import * as React from "react";
 
 import { storiesOf } from "@storybook/react";
 import { withInfo } from "@storybook/addon-info";
-import { InlineWidget } from "../InlineWidget/InlineWidget";
-import { PopupText } from "../PopupText/PopupText";
-import { PopupWidget } from "../PopupWidget/PopupWidget";
+import InlineWidget from "../InlineWidget/InlineWidget";
+import PopupText from "../PopupText/PopupText";
+import PopupWidget from "../PopupWidget/PopupWidget";
 
 const prefill = {
   name: "Jon Snow",
   firstName: "Jon",
   lastName: "Snow",
-  email: "swag@swag.com",
+  email: "test@test.com",
   customAnswers: {
     a1: "a1",
     a2: "a2",
