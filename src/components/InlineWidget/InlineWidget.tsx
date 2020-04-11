@@ -1,9 +1,17 @@
 import * as React from "react";
 import { loadScript } from "../../calendly";
+import { Prefill } from "../../calendly";
 
 export interface Props {
   url: string;
+  prefill?: Prefill;
   styles?: React.CSSProperties | undefined;
+}
+
+export interface InlineWidgetOptions {
+  url: string;
+  parentElement: HTMLElement;
+  prefill?: Prefill;
 }
 
 const defaultStyles = {
@@ -24,6 +32,7 @@ class InlineWidget extends React.Component<Props> {
     window.Calendly.initInlineWidget({
       url: this.props.url,
       parentElement: this.widgetParentContainerRef.current!,
+      prefill: this.props.prefill,
     });
   }
 
