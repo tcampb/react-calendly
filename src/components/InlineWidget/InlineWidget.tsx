@@ -32,8 +32,8 @@ class InlineWidget extends React.Component<Props> {
       <div
         className="calendly-inline-widget"
         style={this.props.styles || defaultStyles}
-        data-url={this.props.url}
         ref={this.widgetParentContainerRef}
+        data-auto-load="false"
       ></div>
     );
   }
