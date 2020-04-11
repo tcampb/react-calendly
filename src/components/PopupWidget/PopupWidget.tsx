@@ -4,6 +4,7 @@ import {
   CALENDLY_STYLESHEET_SOURCE,
   CALENDLY_SCRIPT_SOURCE,
 } from "../../constants";
+import { Prefill } from "../../calendly";
 
 export interface Props {
   url: string;
@@ -11,6 +12,7 @@ export interface Props {
   color?: string;
   textColor?: string;
   branding?: boolean;
+  prefill?: Prefill;
 }
 
 const defaultProps: Partial<Props> = {
