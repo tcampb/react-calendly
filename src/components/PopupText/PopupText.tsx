@@ -1,9 +1,6 @@
+import "../../calendly-widget.css";
 import * as React from "react";
-import { loadScript, loadStyleSheet } from "../../calendly";
-import {
-  CALENDLY_SCRIPT_SOURCE,
-  CALENDLY_STYLESHEET_SOURCE,
-} from "../../constants";
+import { withCalendly } from "../../calendly";
 
 export interface Props {
   url: string;
@@ -19,16 +16,7 @@ const createClickHandler = (url: string) => (
   });
 };
 
-export class PopupText extends React.Component<Props> {
-  componentDidMount() {
-    if (!document.querySelector(`script[src="${CALENDLY_SCRIPT_SOURCE}"]`)) {
-      loadScript();
-    }
-    if (!document.querySelector(`link[href="${CALENDLY_STYLESHEET_SOURCE}"]`)) {
-      loadStyleSheet();
-    }
-  }
-
+class PopupText extends React.Component<Props> {
   componentWillUnmount() {
     window.Calendly.closePopupWidget();
   }
@@ -41,3 +29,5 @@ export class PopupText extends React.Component<Props> {
     );
   }
 }
+
+export default withCalendly(PopupText);

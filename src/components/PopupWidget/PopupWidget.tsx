@@ -1,9 +1,6 @@
+import "../../calendly-widget.css";
 import * as React from "react";
-import { loadScript, loadStyleSheet } from "../../calendly";
-import {
-  CALENDLY_STYLESHEET_SOURCE,
-  CALENDLY_SCRIPT_SOURCE,
-} from "../../constants";
+import { withCalendly } from "../../calendly";
 
 export interface Props {
   url: string;
@@ -19,7 +16,7 @@ const defaultProps: Partial<Props> = {
   textColor: "#ffffff",
 };
 
-export class PopupWidget extends React.Component<Props> {
+class PopupWidget extends React.Component<Props> {
   componentWillReceiveProps(nextProps: Props) {
     window.Calendly.initBadgeWidget({
       ...defaultProps,
@@ -33,19 +30,7 @@ export class PopupWidget extends React.Component<Props> {
       ...this.props,
     };
 
-    const onLoad = () => {
-      window.Calendly.initBadgeWidget(options);
-    };
-
-    if (!document.querySelector(`script[src="${CALENDLY_SCRIPT_SOURCE}"]`)) {
-      loadScript(onLoad);
-    } else {
-      window.Calendly.initBadgeWidget(options);
-    }
-
-    if (!document.querySelector(`link[href="${CALENDLY_STYLESHEET_SOURCE}"]`)) {
-      loadStyleSheet();
-    }
+    window.Calendly.initBadgeWidget(options);
   }
 
   componentWillUnmount() {
@@ -57,3 +42,5 @@ export class PopupWidget extends React.Component<Props> {
     return <></>;
   }
 }
+
+export default withCalendly(PopupWidget);

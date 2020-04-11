@@ -5,9 +5,9 @@ import * as React from "react";
 
 import { storiesOf } from "@storybook/react";
 import { withInfo } from "@storybook/addon-info";
-import { InlineWidget } from "../InlineWidget/InlineWidget";
-import { PopupText } from "../PopupText/PopupText";
-import { PopupWidget } from "../PopupWidget/PopupWidget";
+import InlineWidget from "../InlineWidget/InlineWidget";
+import PopupText from "../PopupText/PopupText";
+import PopupWidget from "../PopupWidget/PopupWidget";
 
 storiesOf("Components", module)
   .addDecorator(withKnobs)
