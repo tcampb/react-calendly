@@ -1,6 +1,6 @@
-import * as React from "react";
 import { Props as BadgeWidgetOptions } from "./components/PopupWidget/PopupWidget";
 import initializeCalendly from "./calendly-widget";
+import { CALENDLY_STYLESHEET_SOURCE } from "./constants";
 
 export interface ICalendly {
   initInlineWidget(options: { url: string; parentElement: HTMLElement }): void;
@@ -17,10 +17,17 @@ declare global {
   }
 }
 
-export const withCalendly = function <P>(Component: React.ComponentType<P>) {
+export const loadScript = () => {
   if (!window.Calendly) {
     initializeCalendly();
   }
+};
 
-  return (props: P) => <Component {...props} />;
+export const loadStyleSheet = () => {
+  if (!document.querySelector(`link[href="${CALENDLY_STYLESHEET_SOURCE}"]`)) {
+    const link = document.createElement("link");
+    link.rel = "stylesheet";
+    link.href = CALENDLY_STYLESHEET_SOURCE;
+    document.body.appendChild(link);
+  }
 };

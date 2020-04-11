@@ -1,6 +1,5 @@
 import typescript from "@rollup/plugin-typescript";
 import commonjs from "rollup-plugin-commonjs";
-import postcss from "rollup-plugin-postcss";
 import resolve from "rollup-plugin-node-resolve";
 import external from "rollup-plugin-peer-deps-external";
 import url from "rollup-plugin-url";
@@ -22,5 +21,5 @@ export default {
       sourcemap: true,
     },
   ],
-  plugins: [external(), postcss(), url(), resolve(), typescript(), commonjs()],
+  plugins: [external(), url(), resolve(), typescript(), commonjs()],
 };

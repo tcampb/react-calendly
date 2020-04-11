@@ -1,5 +1,5 @@
 import * as React from "react";
-import { withCalendly } from "../../calendly";
+import { loadScript } from "../../calendly";
 
 export interface Props {
   url: string;
@@ -20,6 +20,7 @@ class InlineWidget extends React.Component<Props> {
   }
 
   componentDidMount() {
+    loadScript();
     window.Calendly.initInlineWidget({
       url: this.props.url,
       parentElement: this.widgetParentContainerRef.current!,
@@ -38,4 +39,4 @@ class InlineWidget extends React.Component<Props> {
   }
 }
 
-export default withCalendly(InlineWidget);
+export default InlineWidget;

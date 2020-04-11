@@ -1,6 +1,5 @@
-import "../../calendly-widget.css";
 import * as React from "react";
-import { withCalendly } from "../../calendly";
+import { loadScript, loadStyleSheet } from "../../calendly";
 
 export interface Props {
   url: string;
@@ -25,6 +24,9 @@ class PopupWidget extends React.Component<Props> {
   }
 
   componentDidMount() {
+    loadScript();
+    loadStyleSheet();
+
     const options = {
       ...defaultProps,
       ...this.props,
@@ -43,4 +45,4 @@ class PopupWidget extends React.Component<Props> {
   }
 }
 
-export default withCalendly(PopupWidget);
+export default PopupWidget;
