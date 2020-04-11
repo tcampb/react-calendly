@@ -1,4 +1,7 @@
 // @ts-nocheck
+/* eslint-disable  @typescript-eslint/no-unused-expressions */
+/* eslint-disable  no-restricted-globals */
+
 export default () => (
   /*
   code is extracted from Calendly's embed script: https://assets.calendly.com/assets/external/widget.js
