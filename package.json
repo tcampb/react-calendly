@@ -1,6 +1,6 @@
 {
   "name": "react-calendly",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "description": "Calendly integration for React apps",
   "author": "tcampb",
   "license": "MIT",
