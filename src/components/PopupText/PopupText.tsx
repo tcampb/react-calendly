@@ -1,16 +1,18 @@
 import * as React from "react";
 import { loadScript, loadStyleSheet } from "../../calendly";
-import { Prefill } from "../../calendly";
+import { Prefill, Utm } from "../../calendly";
 
 export interface Props {
   url: string;
   text: string;
   prefill?: Prefill;
+  utm?: Utm;
 }
 
 export interface PopupWidgetOptions {
   url: string;
   prefill?: Prefill;
+  utm?: Utm;
 }
 
 const initWidget = (options: PopupWidgetOptions) => {
@@ -38,6 +40,7 @@ class PopupText extends React.Component<Props> {
     const widgetOptions: PopupWidgetOptions = {
       url: this.props.url,
       prefill: this.props.prefill,
+      utm: this.props.utm,
     };
     return (
       <a href="" onClick={createClickHandler(widgetOptions)}>
