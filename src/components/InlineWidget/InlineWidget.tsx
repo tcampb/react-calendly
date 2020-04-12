@@ -1,10 +1,11 @@
 import * as React from "react";
 import { loadScript } from "../../calendly";
-import { Prefill } from "../../calendly";
+import { Prefill, Utm } from "../../calendly";
 
 export interface Props {
   url: string;
   prefill?: Prefill;
+  utm?: Utm;
   styles?: React.CSSProperties | undefined;
 }
 
@@ -12,6 +13,7 @@ export interface InlineWidgetOptions {
   url: string;
   parentElement: HTMLElement;
   prefill?: Prefill;
+  utm?: Utm;
 }
 
 const defaultStyles = {
@@ -33,6 +35,7 @@ class InlineWidget extends React.Component<Props> {
       url: this.props.url,
       parentElement: this.widgetParentContainerRef.current!,
       prefill: this.props.prefill,
+      utm: this.props.utm,
     });
   }
 

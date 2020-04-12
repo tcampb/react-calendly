@@ -1,6 +1,6 @@
 import * as React from "react";
 import { loadScript, loadStyleSheet } from "../../calendly";
-import { Prefill } from "../../calendly";
+import { Prefill, Utm } from "../../calendly";
 
 export interface Props {
   url: string;
@@ -9,6 +9,7 @@ export interface Props {
   textColor?: string;
   branding?: boolean;
   prefill?: Prefill;
+  utm?: Utm;
 }
 
 const defaultProps: Partial<Props> = {

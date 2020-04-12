@@ -28,6 +28,14 @@ const prefill = {
   },
 };
 
+const utm = {
+  utmCampaign: "Spring Sale 2019",
+  utmSource: "Facebook",
+  utmMedium: "Ad",
+  utmContent: "Shoe and Shirts",
+  utmTerm: "Spring",
+};
+
 storiesOf("Components", module)
   .addDecorator(withKnobs)
   .addDecorator(withInfo)
@@ -38,6 +46,7 @@ storiesOf("Components", module)
         height: "1000px",
       })}
       prefill={object("prefill", prefill)}
+      utm={object("utm", utm)}
     />
   ))
   .add("PopupText", () => (
@@ -45,6 +54,7 @@ storiesOf("Components", module)
       url={text("url", "https://calendly.com/acmesales")}
       text={text("text", "Click here to schedule!")}
       prefill={object("prefill", prefill)}
+      utm={object("utm", utm)}
     />
   ))
   .add("PopupWidget", () => (
@@ -55,5 +65,6 @@ storiesOf("Components", module)
       textColor={text("textColor", "#ffffff")}
       branding={boolean("branding", true)}
       prefill={object("prefill", prefill)}
+      utm={object("utm", utm)}
     />
   ));

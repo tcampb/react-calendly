@@ -43,6 +43,14 @@ export type Prefill = Optional<{
   }>;
 }>;
 
+export type Utm = Optional<{
+  utmCampaign: string;
+  utmSource: string;
+  utmMedium: string;
+  utmContent: string;
+  utmTerm: string;
+}>;
+
 export const loadScript = () => {
   if (!window.Calendly) {
     initializeCalendly();
