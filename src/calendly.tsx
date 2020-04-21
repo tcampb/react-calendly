@@ -58,6 +58,14 @@ export type Utm = Optional<{
   utmTerm: string;
 }>;
 
+export type PageSettings = Optional<{
+  hideLandingPageDetails: boolean;
+  hideEventTypeDetails: boolean;
+  backgroundColor: string;
+  textColor: string;
+  primaryColor: string;
+}>;
+
 export const loadScript = () => {
   if (!window.Calendly) {
     initializeCalendly();
