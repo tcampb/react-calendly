@@ -100,3 +100,28 @@ export const loadStyleSheet = () => {
     document.body.appendChild(link);
   }
 };
+
+export const withPageSettings = (url: string, pageSettings?: PageSettings) => {
+  if (!pageSettings) return url;
+
+  const {
+    backgroundColor,
+    hideEventTypeDetails,
+    hideLandingPageDetails,
+    primaryColor,
+    textColor,
+  } = pageSettings;
+
+  const queryString = url.slice(url.indexOf("?") + 1);
+
+  const updatedQueryString = [
+    queryString,
+    backgroundColor ? `background_color=${backgroundColor}` : "",
+    hideEventTypeDetails ? `hide_event_type_details=1` : "",
+    hideLandingPageDetails ? `hide_landing_page_details=1` : "",
+    primaryColor ? `primary_color=${primaryColor}` : "",
+    textColor ? `text_color=${textColor}` : "",
+  ].join("&");
+
+  return `${url}?${updatedQueryString}`;
+};
