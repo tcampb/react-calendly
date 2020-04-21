@@ -1,5 +1,5 @@
 import * as React from "react";
-import { loadScript } from "../../calendly";
+import { loadScript, PageSettings, withPageSettings } from "../../calendly";
 import { Prefill, Utm } from "../../calendly";
 
 export interface Props {
@@ -7,6 +7,7 @@ export interface Props {
   prefill?: Prefill;
   utm?: Utm;
   styles?: React.CSSProperties | undefined;
+  pageSettings?: PageSettings;
 }
 
 export interface InlineWidgetOptions {
@@ -32,7 +33,7 @@ class InlineWidget extends React.Component<Props> {
   componentDidMount() {
     loadScript();
     window.Calendly.initInlineWidget({
-      url: this.props.url,
+      url: withPageSettings(this.props.url, this.props.pageSettings),
       parentElement: this.widgetParentContainerRef.current!,
       prefill: this.props.prefill,
       utm: this.props.utm,
