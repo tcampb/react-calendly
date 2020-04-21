@@ -59,10 +59,30 @@ export type Utm = Optional<{
 }>;
 
 export type PageSettings = Optional<{
+  /**
+   * @description Use this setting to hide your profile picture, name, event duration, location, and description when Calendly is embedded. This will help reduce duplicate information that you may already have on your web page.
+   * @see {@link https://help.calendly.com/hc/en-us/articles/360020052833-Advanced-embed-options#2} for further information.
+   */
   hideLandingPageDetails: boolean;
+  /**
+   * @description Use this setting to hide your profile picture, name, event duration, location, and description when Calendly is embedded. This will help reduce duplicate information that you may already have on your web page.
+   * @see {@link https://help.calendly.com/hc/en-us/articles/360020052833-Advanced-embed-options#2} for further information.
+   */
   hideEventTypeDetails: boolean;
+  /**
+   * @description This setting is only available for Calendly users on the Pro plan. Use this setting to change your Calendly scheduling page's background color.
+   * @see {@link https://help.calendly.com/hc/en-us/articles/223147027-Embed-options-overview#3} for further information.
+   */
   backgroundColor: string;
+  /**
+   * @description This setting is only available for Calendly users on the Pro plan. Use this setting to change your Calendly scheduling page's text color.
+   * @see {@link https://help.calendly.com/hc/en-us/articles/223147027-Embed-options-overview#3} for further information.
+   */
   textColor: string;
+  /**
+   * @description This setting is only available for Calendly users on the Pro plan. Use this setting to change your Calendly scheduling page's primary color.
+   * @see {@link https://help.calendly.com/hc/en-us/articles/223147027-Embed-options-overview#3} for further information.
+   */
   primaryColor: string;
 }>;
 
