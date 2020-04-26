@@ -112,16 +112,20 @@ export const withPageSettings = (url: string, pageSettings?: PageSettings) => {
     textColor,
   } = pageSettings;
 
-  const queryString = url.slice(url.indexOf("?") + 1);
+  const queryStringIndex = url.indexOf("?");
+  const queryString = url.slice(queryStringIndex + 1);
+  const baseUrl = url.slice(0, queryStringIndex);
 
   const updatedQueryString = [
     queryString,
-    backgroundColor ? `background_color=${backgroundColor}` : "",
-    hideEventTypeDetails ? `hide_event_type_details=1` : "",
-    hideLandingPageDetails ? `hide_landing_page_details=1` : "",
-    primaryColor ? `primary_color=${primaryColor}` : "",
-    textColor ? `text_color=${textColor}` : "",
-  ].join("&");
+    backgroundColor ? `background_color=${backgroundColor}` : null,
+    hideEventTypeDetails ? `hide_event_type_details=1` : null,
+    hideLandingPageDetails ? `hide_landing_page_details=1` : null,
+    primaryColor ? `primary_color=${primaryColor}` : null,
+    textColor ? `text_color=${textColor}` : null,
+  ]
+    .filter((item) => item !== null)
+    .join("&");
 
-  return `${url}?${updatedQueryString}`;
+  return `${baseUrl}?${updatedQueryString}`;
 };
