@@ -27,6 +27,17 @@ class InlineWidget extends React.Component<Props> {
   constructor(props: Props) {
     super(props);
     this.widgetParentContainerRef = React.createRef<HTMLDivElement>();
+    this.destroyInlineWidget = this.destroyInlineWidget.bind(this);
+  }
+
+  componentWillReceiveProps(nextProps: Props) {
+    this.destroyInlineWidget();
+    window.Calendly.initInlineWidget({
+      url: nextProps.url,
+      parentElement: this.widgetParentContainerRef.current!,
+      prefill: nextProps.prefill,
+      utm: nextProps.utm,
+    });
   }
 
   componentDidMount() {
@@ -48,6 +59,10 @@ class InlineWidget extends React.Component<Props> {
         data-auto-load="false"
       ></div>
     );
+  }
+
+  private destroyInlineWidget() {
+    this.widgetParentContainerRef.current!.innerHTML = "";
   }
 }
 
