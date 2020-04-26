@@ -113,8 +113,9 @@ export const withPageSettings = (url: string, pageSettings?: PageSettings) => {
   } = pageSettings;
 
   const queryStringIndex = url.indexOf("?");
+  const hasQueryString = queryStringIndex > -1;
   const queryString = url.slice(queryStringIndex + 1);
-  const baseUrl = url.slice(0, queryStringIndex);
+  const baseUrl = hasQueryString ? url.slice(0, queryStringIndex) : url;
 
   const updatedQueryString = [
     queryString,
