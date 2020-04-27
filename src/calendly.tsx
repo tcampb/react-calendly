@@ -71,16 +71,19 @@ export type PageSettings = Optional<{
   hideEventTypeDetails: boolean;
   /**
    * @description This setting is only available for Calendly users on the Pro plan. Use this setting to change your Calendly scheduling page's background color.
+   * @example 00a2ff
    * @see {@link https://help.calendly.com/hc/en-us/articles/223147027-Embed-options-overview#3} for further information.
    */
   backgroundColor: string;
   /**
    * @description This setting is only available for Calendly users on the Pro plan. Use this setting to change your Calendly scheduling page's text color.
+   * @example ffffff
    * @see {@link https://help.calendly.com/hc/en-us/articles/223147027-Embed-options-overview#3} for further information.
    */
   textColor: string;
   /**
    * @description This setting is only available for Calendly users on the Pro plan. Use this setting to change your Calendly scheduling page's primary color.
+   * @example 4d5055
    * @see {@link https://help.calendly.com/hc/en-us/articles/223147027-Embed-options-overview#3} for further information.
    */
   primaryColor: string;
