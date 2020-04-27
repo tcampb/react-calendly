@@ -4,8 +4,9 @@ import {
   loadStyleSheet,
   PageSettings,
   withPageSettings,
+  Prefill,
+  Utm,
 } from "../../calendly";
-import { Prefill, Utm } from "../../calendly";
 
 export interface Props {
   url: string;

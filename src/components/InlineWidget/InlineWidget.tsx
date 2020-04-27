@@ -1,6 +1,11 @@
 import * as React from "react";
-import { loadScript, PageSettings, withPageSettings } from "../../calendly";
-import { Prefill, Utm } from "../../calendly";
+import {
+  loadScript,
+  PageSettings,
+  withPageSettings,
+  Prefill,
+  Utm,
+} from "../../calendly";
 
 export interface Props {
   url: string;
