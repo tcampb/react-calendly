@@ -14,6 +14,12 @@ npm install --save react-calendly
 
 https://tcampb.github.io/react-calendly
 
+## FAQ
+
+#### Why are my page settings not working?
+
+For the page settings to work, you'll need to pass in a `url` prop that is associated with a Calendly account on the [Pro plan](https://calendly.com/pages/pricing).
+
 ## License
 
 MIT © [tcampb](https://github.com/tcampb)
