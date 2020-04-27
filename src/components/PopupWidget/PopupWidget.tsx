@@ -1,6 +1,12 @@
 import * as React from "react";
-import { loadScript, loadStyleSheet } from "../../calendly";
-import { Prefill, Utm } from "../../calendly";
+import {
+  loadScript,
+  loadStyleSheet,
+  PageSettings,
+  withPageSettings,
+  Prefill,
+  Utm,
+} from "../../calendly";
 
 export interface Props {
   url: string;
@@ -10,6 +16,7 @@ export interface Props {
   branding?: boolean;
   prefill?: Prefill;
   utm?: Utm;
+  pageSettings?: PageSettings;
 }
 
 const defaultProps: Partial<Props> = {
@@ -23,6 +30,7 @@ class PopupWidget extends React.Component<Props> {
     window.Calendly.initBadgeWidget({
       ...defaultProps,
       ...nextProps,
+      url: withPageSettings(nextProps.url, nextProps.pageSettings),
     });
   }
 
@@ -33,6 +41,7 @@ class PopupWidget extends React.Component<Props> {
     const options = {
       ...defaultProps,
       ...this.props,
+      url: withPageSettings(this.props.url, this.props.pageSettings),
     };
 
     window.Calendly.initBadgeWidget(options);

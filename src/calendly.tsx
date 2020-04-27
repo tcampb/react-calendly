@@ -58,6 +58,37 @@ export type Utm = Optional<{
   utmTerm: string;
 }>;
 
+export type PageSettings = Optional<{
+  /**
+   * @description Use this setting to hide your profile picture, name, event duration, location, and description when Calendly is embedded. This will help reduce duplicate information that you may already have on your web page.
+   * @see {@link https://help.calendly.com/hc/en-us/articles/360020052833-Advanced-embed-options#2} for further information.
+   */
+  hideLandingPageDetails: boolean;
+  /**
+   * @description Use this setting to hide your profile picture, name, event duration, location, and description when Calendly is embedded. This will help reduce duplicate information that you may already have on your web page.
+   * @see {@link https://help.calendly.com/hc/en-us/articles/360020052833-Advanced-embed-options#2} for further information.
+   */
+  hideEventTypeDetails: boolean;
+  /**
+   * @description This setting is only available for Calendly users on the Pro plan. Use this setting to change your Calendly scheduling page's background color.
+   * @example 00a2ff
+   * @see {@link https://help.calendly.com/hc/en-us/articles/223147027-Embed-options-overview#3} for further information.
+   */
+  backgroundColor: string;
+  /**
+   * @description This setting is only available for Calendly users on the Pro plan. Use this setting to change your Calendly scheduling page's text color.
+   * @example ffffff
+   * @see {@link https://help.calendly.com/hc/en-us/articles/223147027-Embed-options-overview#3} for further information.
+   */
+  textColor: string;
+  /**
+   * @description This setting is only available for Calendly users on the Pro plan. Use this setting to change your Calendly scheduling page's primary color.
+   * @example 4d5055
+   * @see {@link https://help.calendly.com/hc/en-us/articles/223147027-Embed-options-overview#3} for further information.
+   */
+  primaryColor: string;
+}>;
+
 export const loadScript = () => {
   if (!window.Calendly) {
     initializeCalendly();
@@ -71,4 +102,34 @@ export const loadStyleSheet = () => {
     link.href = CALENDLY_STYLESHEET_SOURCE;
     document.body.appendChild(link);
   }
+};
+
+export const withPageSettings = (url: string, pageSettings?: PageSettings) => {
+  if (!pageSettings) return url;
+
+  const {
+    backgroundColor,
+    hideEventTypeDetails,
+    hideLandingPageDetails,
+    primaryColor,
+    textColor,
+  } = pageSettings;
+
+  const queryStringIndex = url.indexOf("?");
+  const hasQueryString = queryStringIndex > -1;
+  const queryString = url.slice(queryStringIndex + 1);
+  const baseUrl = hasQueryString ? url.slice(0, queryStringIndex) : url;
+
+  const updatedQueryString = [
+    queryString,
+    backgroundColor ? `background_color=${backgroundColor}` : null,
+    hideEventTypeDetails ? `hide_event_type_details=1` : null,
+    hideLandingPageDetails ? `hide_landing_page_details=1` : null,
+    primaryColor ? `primary_color=${primaryColor}` : null,
+    textColor ? `text_color=${textColor}` : null,
+  ]
+    .filter((item) => item !== null)
+    .join("&");
+
+  return `${baseUrl}?${updatedQueryString}`;
 };

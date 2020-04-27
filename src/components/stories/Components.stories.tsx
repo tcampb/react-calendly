@@ -1,3 +1,4 @@
+import * as React from "react";
 import "./styles.css";
 const {
   withKnobs,
@@ -7,16 +8,15 @@ const {
   color,
 } = require("@storybook/addon-knobs");
 
-import * as React from "react";
-
 import { storiesOf } from "@storybook/react";
 import { withInfo } from "@storybook/addon-info";
 import InlineWidget from "../InlineWidget/InlineWidget";
 import PopupText from "../PopupText/PopupText";
 import PopupWidget from "../PopupWidget/PopupWidget";
 import CalendlyEventListener from "../CalendlyEventListener/CalendlyEventListener";
+import { PageSettings, Utm, Prefill } from "../../calendly";
 
-const prefill = {
+const prefill: Prefill = {
   name: "Jon Snow",
   firstName: "Jon",
   lastName: "Snow",
@@ -35,12 +35,20 @@ const prefill = {
   },
 };
 
-const utm = {
+const utm: Utm = {
   utmCampaign: "Spring Sale 2019",
   utmSource: "Facebook",
   utmMedium: "Ad",
   utmContent: "Shoe and Shirts",
   utmTerm: "Spring",
+};
+
+const pageSettings: PageSettings = {
+  backgroundColor: "ffffff",
+  hideEventTypeDetails: false,
+  hideLandingPageDetails: false,
+  primaryColor: "00a2ff",
+  textColor: "4d5055",
 };
 
 storiesOf("Components", module)
@@ -54,6 +62,7 @@ storiesOf("Components", module)
       })}
       prefill={object("prefill", prefill)}
       utm={object("utm", utm)}
+      pageSettings={object("pageSettings", pageSettings)}
     />
   ))
   .add("PopupText", () => (
@@ -62,6 +71,7 @@ storiesOf("Components", module)
       text={text("text", "Click here to schedule!")}
       prefill={object("prefill", prefill)}
       utm={object("utm", utm)}
+      pageSettings={object("pageSettings", pageSettings)}
     />
   ))
   .add("PopupWidget", () => (
@@ -73,6 +83,7 @@ storiesOf("Components", module)
       branding={boolean("branding", true)}
       prefill={object("prefill", prefill)}
       utm={object("utm", utm)}
+      pageSettings={object("pageSettings", pageSettings)}
     />
   ))
   .add("CalendlyEventListener", () => {
