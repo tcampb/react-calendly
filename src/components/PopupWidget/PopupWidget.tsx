@@ -26,12 +26,14 @@ const defaultProps: Partial<Props> = {
 };
 
 class PopupWidget extends React.Component<Props> {
-  componentWillReceiveProps(nextProps: Props) {
-    window.Calendly.initBadgeWidget({
+  componentDidUpdate() {
+    const options = {
       ...defaultProps,
-      ...nextProps,
-      url: withPageSettings(nextProps.url, nextProps.pageSettings),
-    });
+      ...this.props,
+      url: withPageSettings(this.props.url, this.props.pageSettings),
+    };
+
+    window.Calendly.initBadgeWidget(options);
   }
 
   componentDidMount() {
