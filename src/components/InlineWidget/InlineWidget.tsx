@@ -36,13 +36,13 @@ class InlineWidget extends React.Component<Props> {
     this.destroyInlineWidget = this.destroyInlineWidget.bind(this);
   }
 
-  componentDidUpdate(nextProps: Props) {
+  componentDidUpdate() {
     this.destroyInlineWidget();
     window.Calendly.initInlineWidget({
-      url: nextProps.url,
+      url: this.props.url,
       parentElement: this.widgetParentContainerRef.current!,
-      prefill: nextProps.prefill,
-      utm: nextProps.utm,
+      prefill: this.props.prefill,
+      utm: this.props.utm,
     });
   }
 
