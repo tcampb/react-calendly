@@ -36,7 +36,7 @@ class InlineWidget extends React.Component<Props> {
     this.destroyInlineWidget = this.destroyInlineWidget.bind(this);
   }
 
-  componentWillReceiveProps(nextProps: Props) {
+  componentDidUpdate(nextProps: Props) {
     this.destroyInlineWidget();
     window.Calendly.initInlineWidget({
       url: nextProps.url,
