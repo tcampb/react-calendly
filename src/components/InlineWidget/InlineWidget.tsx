@@ -39,7 +39,7 @@ class InlineWidget extends React.Component<Props> {
   componentDidUpdate() {
     this.destroyInlineWidget();
     window.Calendly.initInlineWidget({
-      url: this.props.url,
+      url: withPageSettings(this.props.url, this.props.pageSettings),
       parentElement: this.widgetParentContainerRef.current!,
       prefill: this.props.prefill,
       utm: this.props.utm,
