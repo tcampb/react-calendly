@@ -23,6 +23,7 @@ const defaultProps: Partial<Props> = {
   branding: false,
   color: "#00a2ff",
   textColor: "#ffffff",
+  text: "Schedule time with me",
 };
 
 class PopupWidget extends React.Component<Props> {
