@@ -1,6 +1,12 @@
 import * as React from "react";
 import "./styles.css";
-const { withKnobs, text, boolean, object } = require("@storybook/addon-knobs");
+const {
+  withKnobs,
+  text,
+  boolean,
+  object,
+  color,
+} = require("@storybook/addon-knobs");
 
 import { storiesOf } from "@storybook/react";
 import { withInfo } from "@storybook/addon-info";
@@ -72,8 +78,8 @@ storiesOf("Components", module)
     <PopupWidget
       url={text("url", "https://calendly.com/acmesales")}
       text={text("text", "Click here to schedule!")}
-      color={text("color", "#00a2ff")}
-      textColor={text("textColor", "#ffffff")}
+      color={color("color", "#00a2ff")}
+      textColor={color("textColor", "#ffffff")}
       branding={boolean("branding", true)}
       prefill={object("prefill", prefill)}
       utm={object("utm", utm)}
