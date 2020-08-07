@@ -14,6 +14,7 @@ export interface Props {
   prefill?: Prefill;
   utm?: Utm;
   pageSettings?: PageSettings;
+  styles?: React.CSSProperties | undefined;
 }
 
 export interface PopupWidgetOptions {
@@ -50,7 +51,7 @@ class PopupText extends React.Component<Props> {
       utm: this.props.utm,
     };
     return (
-      <a href="" onClick={createClickHandler(widgetOptions)}>
+      <a href="" onClick={createClickHandler(widgetOptions)} style={this.props.styles || {}}>
         {this.props.text}
       </a>
     );

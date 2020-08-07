@@ -14,7 +14,7 @@ import InlineWidget from "../InlineWidget/InlineWidget";
 import PopupText from "../PopupText/PopupText";
 import PopupWidget from "../PopupWidget/PopupWidget";
 import CalendlyEventListener from "../CalendlyEventListener/CalendlyEventListener";
-import { PageSettings, Utm, Prefill } from "../../calendly";
+import { PageSettings, Utm, Prefill, openPopupWidget } from "../../calendly";
 
 const prefill: Prefill = {
   name: "Jon Snow",
@@ -72,6 +72,7 @@ storiesOf("Components", module)
       prefill={object("prefill", prefill)}
       utm={object("utm", utm)}
       pageSettings={object("pageSettings", pageSettings)}
+      styles={object("styles", {})}
     />
   ))
   .add("PopupWidget", () => (
@@ -86,6 +87,21 @@ storiesOf("Components", module)
       pageSettings={object("pageSettings", pageSettings)}
     />
   ))
+  .add("Custom Button", () => {
+    const options = {
+      url: text("url", "https://calendly.com/acmesales"),
+      pageSettings: object("pageSettings", pageSettings),
+      utm: object("utm", utm),
+      prefill: object("prefill", prefill)
+    }
+
+    return (
+      <div>
+        <h4 style={{ textAlign: 'center' }}> Use the <code>openPopupWidget</code> function to create a custom button that will open the pop-up scheduler when clicked.</h4>
+        <button style={{ display: 'block', margin: '0 auto' }} onClick={() => openPopupWidget(options)}>Custom Button</button>
+      </div>
+    )
+  })
   .add("CalendlyEventListener", () => {
     const eventId = "calendly-event";
     const instructions =

@@ -133,3 +133,23 @@ export const withPageSettings = (url: string, pageSettings?: PageSettings) => {
 
   return `${baseUrl}?${updatedQueryString}`;
 };
+
+export const openPopupWidget = (options: PopupWidgetOptions & { pageSettings?: PageSettings }) => {
+  loadStyleSheet();
+  loadScript();
+
+  const widgetOptions: PopupWidgetOptions = {
+    url: withPageSettings(options.url, options.pageSettings),
+    prefill: options.prefill,
+    utm: options.utm,
+  };
+
+  window.Calendly.initPopupWidget(widgetOptions);
+}
+
+export const closePopupWidget = () => {
+  loadStyleSheet();
+  loadScript();
+
+  window.Calendly.closePopupWidget();
+}
