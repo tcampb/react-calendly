@@ -26,6 +26,7 @@ export interface InlineWidgetOptions {
 const defaultStyles = {
   minWidth: "320px",
   height: "630px",
+  position: "relative",
 };
 
 class InlineWidget extends React.Component<Props> {
