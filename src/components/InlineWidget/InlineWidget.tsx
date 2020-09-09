@@ -27,7 +27,7 @@ const defaultStyles = {
   minWidth: "320px",
   height: "630px",
   position: "relative",
-};
+} as React.CSSProperties;
 
 class InlineWidget extends React.Component<Props> {
   private readonly widgetParentContainerRef: React.RefObject<HTMLDivElement>;
