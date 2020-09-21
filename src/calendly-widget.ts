@@ -419,7 +419,15 @@ export default () => (
             (this.node.src = this.getSource()),
             (this.node.width = "100%"),
             (this.node.height = "100%"),
-            (this.node.frameBorder = "0")
+            (this.node.frameBorder = "0"),
+            (this.node.onload = function () {
+              var calendlySpinnerElement = document.querySelector(
+                ".calendly-spinner"
+              );
+              if (calendlySpinnerElement) {
+                calendlySpinnerElement.style.visibility = "hidden";
+              }
+            })
           );
         }),
         (t.prototype.inject = function () {
