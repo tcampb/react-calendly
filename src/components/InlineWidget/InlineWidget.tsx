@@ -37,31 +37,27 @@ class InlineWidget extends React.Component<Props> {
     this.destroyInlineWidget = this.destroyInlineWidget.bind(this);
     this.getChildNodeCount = this.getChildNodeCount.bind(this);
     this.shouldWidgetUpdate = this.shouldWidgetUpdate.bind(this);
+    this.initWidget = this.initWidget.bind(this);
   }
 
   componentDidUpdate(prevProps: Props) {
     const shouldUpdate = this.shouldWidgetUpdate(prevProps);
     if (shouldUpdate) {
+      /*
+       * If the Calendly Inline Widget (.calendly-spinner and iframe) has not
+       * yet been added to the DOM then we need to wait for the widget to be inserted
+       * prior to updating the component.
+       *
+       * Fixes https://github.com/tcampb/react-calendly/issues/25
+       */
       if (!this.getChildNodeCount()) {
         this.calendlyWidgetListener("inserted", () => {
-          this.calendlyWidgetListener("removed", () => {
-            window.Calendly.initInlineWidget({
-              url: withPageSettings(this.props.url, this.props.pageSettings),
-              parentElement: this.widgetParentContainerRef.current!,
-              prefill: this.props.prefill,
-              utm: this.props.utm,
-            });
-          });
+          this.calendlyWidgetListener("removed", this.initWidget);
           this.destroyInlineWidget();
         });
       } else {
         this.destroyInlineWidget();
-        window.Calendly.initInlineWidget({
-          url: withPageSettings(this.props.url, this.props.pageSettings),
-          parentElement: this.widgetParentContainerRef.current!,
-          prefill: this.props.prefill,
-          utm: this.props.utm,
-        });
+        this.initWidget();
       }
     }
   }
@@ -94,6 +90,15 @@ class InlineWidget extends React.Component<Props> {
 
   private getChildNodeCount() {
     return this.widgetParentContainerRef.current!.childNodes.length;
+  }
+
+  private initWidget() {
+    window.Calendly.initInlineWidget({
+      url: withPageSettings(this.props.url, this.props.pageSettings),
+      parentElement: this.widgetParentContainerRef.current!,
+      prefill: this.props.prefill,
+      utm: this.props.utm,
+    });
   }
 
   private calendlyWidgetListener(
