@@ -108,6 +108,8 @@ class InlineWidget extends React.Component<Props> {
     const isInsertedEvent = event === "inserted";
     const isRemovedEvent = event === "removed";
     return new MutationObserver((mutationsList, observer) => {
+      observer.disconnect();
+
       if (isInsertedEvent) {
         const nodesAdded = mutationsList.some(
           (record) => !!record.addedNodes.length
@@ -123,8 +125,6 @@ class InlineWidget extends React.Component<Props> {
 
         if (nodesRemoved) callback();
       }
-
-      observer.disconnect();
     }).observe(this.widgetParentContainerRef.current!, {
       childList: true,
     });
