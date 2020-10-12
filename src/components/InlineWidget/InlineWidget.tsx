@@ -35,22 +35,30 @@ class InlineWidget extends React.Component<Props> {
     super(props);
     this.widgetParentContainerRef = React.createRef<HTMLDivElement>();
     this.destroyInlineWidget = this.destroyInlineWidget.bind(this);
+    this.getChildNodeCount = this.getChildNodeCount.bind(this);
+    this.shouldWidgetUpdate = this.shouldWidgetUpdate.bind(this);
+    this.initWidget = this.initWidget.bind(this);
   }
 
   componentDidUpdate(prevProps: Props) {
-    if (
-      prevProps.url !== this.props.url
-      || prevProps.pageSettings !== this.props.pageSettings
-      || prevProps.prefill !== this.props.prefill
-      || prevProps.utm !== this.props.utm
-    ) {
-      this.destroyInlineWidget();
-      window.Calendly.initInlineWidget({
-        url: withPageSettings(this.props.url, this.props.pageSettings),
-        parentElement: this.widgetParentContainerRef.current!,
-        prefill: this.props.prefill,
-        utm: this.props.utm,
-      });
+    const shouldUpdate = this.shouldWidgetUpdate(prevProps);
+    if (shouldUpdate) {
+      /*
+       * If the Calendly Inline Widget (.calendly-spinner and iframe) has not
+       * yet been added to the DOM then we need to wait for the widget to be inserted
+       * prior to updating the component.
+       *
+       * Fixes https://github.com/tcampb/react-calendly/issues/25
+       */
+      if (!this.getChildNodeCount()) {
+        this.calendlyWidgetListener("inserted", () => {
+          this.calendlyWidgetListener("removed", this.initWidget);
+          this.destroyInlineWidget();
+        });
+      } else {
+        this.destroyInlineWidget();
+        this.initWidget();
+      }
     }
   }
 
@@ -78,6 +86,57 @@ class InlineWidget extends React.Component<Props> {
 
   private destroyInlineWidget() {
     this.widgetParentContainerRef.current!.innerHTML = "";
+  }
+
+  private getChildNodeCount() {
+    return this.widgetParentContainerRef.current!.childNodes.length;
+  }
+
+  private initWidget() {
+    window.Calendly.initInlineWidget({
+      url: withPageSettings(this.props.url, this.props.pageSettings),
+      parentElement: this.widgetParentContainerRef.current!,
+      prefill: this.props.prefill,
+      utm: this.props.utm,
+    });
+  }
+
+  private calendlyWidgetListener(
+    event: "inserted" | "removed",
+    callback: () => void
+  ) {
+    const isInsertedEvent = event === "inserted";
+    const isRemovedEvent = event === "removed";
+    return new MutationObserver((mutationsList, observer) => {
+      observer.disconnect();
+
+      if (isInsertedEvent) {
+        const nodesAdded = mutationsList.some(
+          (record) => !!record.addedNodes.length
+        );
+
+        if (nodesAdded) callback();
+      }
+
+      if (isRemovedEvent) {
+        const nodesRemoved = mutationsList.some(
+          (record) => !!record.removedNodes.length
+        );
+
+        if (nodesRemoved) callback();
+      }
+    }).observe(this.widgetParentContainerRef.current!, {
+      childList: true,
+    });
+  }
+
+  private shouldWidgetUpdate(prevProps: Props) {
+    return (
+      prevProps.url !== this.props.url ||
+      prevProps.pageSettings !== this.props.pageSettings ||
+      prevProps.prefill !== this.props.prefill ||
+      prevProps.utm !== this.props.utm
+    );
   }
 }
 
