@@ -126,7 +126,7 @@ storiesOf("Components", module)
             >
               here
             </a>
-            {"."}
+            {". You must specify your host in the iframe's src with the embed_domain parameter."}
           </h4>
           <div>
             Calendly Event: <span id={eventId}></span>
