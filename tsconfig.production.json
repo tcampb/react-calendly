@@ -28,8 +28,7 @@
     "allowSyntheticDefaultImports": true,
     "strict": true,
     "resolveJsonModule": true,
-    "isolatedModules": true,
-    "noEmit": true
+    "isolatedModules": true
   },
   "include": [
     "src"
@@ -39,6 +38,7 @@
     "build",
     "dist",
     "rollup.config.js",
-    "**/*.stories.tsx"
+    "**/*.stories.tsx",
+    "**/*.test.tsx"
   ]
 }
