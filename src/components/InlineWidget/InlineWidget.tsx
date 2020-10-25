@@ -80,6 +80,7 @@ class InlineWidget extends React.Component<Props> {
         style={this.props.styles || defaultStyles}
         ref={this.widgetParentContainerRef}
         data-auto-load="false"
+        data-testid="inline-widget-main"
       ></div>
     );
   }

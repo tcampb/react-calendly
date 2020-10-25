@@ -71,7 +71,13 @@ export type PageSettings = Optional<{
   hideEventTypeDetails: boolean;
   /**
    * @description This setting is only available for Calendly users on the Pro plan. Use this setting to change your Calendly scheduling page's background color.
-   * @example 00a2ff
+   * @example true
+   * @see {@link https://help.calendly.com/hc/en-us/articles/223147027-Embed-options-overview#3} for further information.
+   */
+  hideGdprBanner: boolean;
+  /**
+   * @description The General Data Protection Regulation governs data protection in the EU and EEA. Certain Calendly integrations require access to cookies with user information. If you do not embed the GDPR banner, users in those areas will not have the ability to give their consent in order to access integrations such as Google Analytics, Facebook Pixel, PayPal, and Stripe.
+   * @example true
    * @see {@link https://help.calendly.com/hc/en-us/articles/223147027-Embed-options-overview#3} for further information.
    */
   backgroundColor: string;
@@ -111,6 +117,7 @@ export const withPageSettings = (url: string, pageSettings?: PageSettings) => {
     backgroundColor,
     hideEventTypeDetails,
     hideLandingPageDetails,
+    hideGdprBanner,
     primaryColor,
     textColor,
   } = pageSettings;
@@ -125,6 +132,7 @@ export const withPageSettings = (url: string, pageSettings?: PageSettings) => {
     backgroundColor ? `background_color=${backgroundColor}` : null,
     hideEventTypeDetails ? `hide_event_type_details=1` : null,
     hideLandingPageDetails ? `hide_landing_page_details=1` : null,
+    hideGdprBanner ? `hide_gdpr_banner=1` : null,
     primaryColor ? `primary_color=${primaryColor}` : null,
     textColor ? `text_color=${textColor}` : null,
   ]
