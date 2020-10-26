@@ -51,7 +51,7 @@ class PopupText extends React.Component<Props> {
       utm: this.props.utm,
     };
     return (
-      <a href="" onClick={createClickHandler(widgetOptions)} style={this.props.styles || {}}>
+      <a href="" data-testid="popup-button" onClick={createClickHandler(widgetOptions)} style={this.props.styles || {}}>
         {this.props.text}
       </a>
     );

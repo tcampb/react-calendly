@@ -417,6 +417,7 @@ export default () => (
           return (
             (this.node = document.createElement("iframe")),
             (this.node.src = this.getSource()),
+            (this.node.setAttribute('data-testid', 'calendly-iframe')),
             (this.node.width = "100%"),
             (this.node.height = "100%"),
             (this.node.frameBorder = "0"),
