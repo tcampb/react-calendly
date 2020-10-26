@@ -1,8 +1,8 @@
 import typescript from "@rollup/plugin-typescript";
-import commonjs from "rollup-plugin-commonjs";
-import resolve from "rollup-plugin-node-resolve";
+import commonjs from "@rollup/plugin-commonjs";
+import resolve from "@rollup/plugin-node-resolve";
 import external from "rollup-plugin-peer-deps-external";
-import url from "rollup-plugin-url";
+import url from "@rollup/plugin-url";
 import pkg from "./package.json";
 
 export default {

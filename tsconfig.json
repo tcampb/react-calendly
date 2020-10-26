@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "outDir": "build",
+    "rootDir": "src",
     "module": "esnext",
     "target": "es5",
     "lib": [
@@ -12,8 +12,6 @@
     "sourceMap": true,
     "allowJs": false,
     "jsx": "react",
-    "declaration": true,
-    "declarationDir": "typings",
     "moduleResolution": "node",
     "forceConsistentCasingInFileNames": true,
     "noImplicitReturns": true,
@@ -21,6 +19,7 @@
     "noImplicitAny": true,
     "strictNullChecks": true,
     "suppressImplicitAnyIndexErrors": true,
+    "noFallthroughCasesInSwitch": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "skipLibCheck": true,
@@ -39,6 +38,7 @@
     "build",
     "dist",
     "rollup.config.js",
-    "**/*.stories.tsx"
+    "**/*.stories.tsx",
+    "**/*.test.tsx"
   ]
 }
