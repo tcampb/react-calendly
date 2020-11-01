@@ -9,7 +9,6 @@ const {
 } = require("@storybook/addon-knobs");
 
 import { storiesOf } from "@storybook/react";
-import { withInfo } from "@storybook/addon-info";
 import InlineWidget from "../InlineWidget/InlineWidget";
 import PopupText from "../PopupText/PopupText";
 import PopupWidget from "../PopupWidget/PopupWidget";
@@ -53,7 +52,6 @@ const pageSettings: PageSettings = {
 
 storiesOf("Components", module)
   .addDecorator(withKnobs)
-  .addDecorator(withInfo)
   .add("InlineWidget", () => (
     <InlineWidget
       url={text("url", "https://calendly.com/acmesales")}
