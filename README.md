@@ -141,7 +141,7 @@ const CustomButton = ({ url, prefill, pageSettings, utm }) => {
 
 #### How can I access the event details when an event is scheduled?
 
-The [CalendlyEventListener](https://tcampb.github.io/react-calendly/?path=/story/components--calendlyeventlistener) `onEventScheduled` prop accepts an event with the following data structure:
+The [CalendlyEventListener](https://tcampb.github.io/react-calendly/?path=/story/components--calendlyeventlistener) `onEventScheduled` prop receives an event with the following data structure:
 
 ```javascript
 {
@@ -157,7 +157,7 @@ The [CalendlyEventListener](https://tcampb.github.io/react-calendly/?path=/story
 }
 ```
 
-If you are using [Calendly's v2 api](https://developer.calendly.com/docs/api-docs/docs/A-API-Getting-Started.md) you can the event/invitee URIs included in the event payload to retrieve additional information about the event and/or invitee record.
+If you are using [Calendly's v2 api](https://developer.calendly.com/docs/api-docs/docs/A-API-Getting-Started.md) you can reference the event/invitee URIs included in the event payload to retrieve additional information about the event and/or invitee record.
 
 - [Scheduled Event Schema](https://developer.calendly.com/docs/api-docs/reference/calendly-api/openapi.yaml/paths/~1scheduled_events~1%7Buuid%7D/get)
 - [Invitee Schema](https://developer.calendly.com/docs/api-docs/reference/calendly-api/openapi.yaml/paths/~1scheduled_events~1%7Bevent_uuid%7D~1invitees~1%7Binvitee_uuid%7D/get)
