@@ -1,15 +1,38 @@
 import * as React from "react";
 import { CalendlyEvent } from "../../calendly";
 
-type CalendlyEventMessage = MessageEvent & {
-  data: { event: CalendlyEvent };
-};
+type DateAndTimeSelectedEvent = MessageEvent<{
+  event: CalendlyEvent.DATE_AND_TIME_SELECTED;
+  payload: {};
+}>;
+
+type EventScheduledEvent = MessageEvent<{
+  event: CalendlyEvent.EVENT_SCHEDULED;
+  payload: {
+    event: {
+      uri: string;
+    };
+    invitee: {
+      uri: string;
+    };
+  };
+}>;
+
+type EventTypeViewedEvent = MessageEvent<{
+  event: CalendlyEvent.EVENT_TYPE_VIEWED;
+  payload: {};
+}>;
+
+type ProfilePageViewedEvent = MessageEvent<{
+  event: CalendlyEvent.PROFILE_PAGE_VIEWED;
+  payload: {};
+}>;
 
 type Props = {
-  onDateAndTimeSelected?: (e: CalendlyEventMessage) => any;
-  onEventScheduled?: (e: CalendlyEventMessage) => any;
-  onEventTypeViewed?: (e: CalendlyEventMessage) => any;
-  onProfilePageViewed?: (e: CalendlyEventMessage) => any;
+  onDateAndTimeSelected?: (e: DateAndTimeSelectedEvent) => any;
+  onEventScheduled?: (e: EventScheduledEvent) => any;
+  onEventTypeViewed?: (e: EventTypeViewedEvent) => any;
+  onProfilePageViewed?: (e: ProfilePageViewedEvent) => any;
 };
 
 class CalendlyEventListener extends React.Component<Props> {
