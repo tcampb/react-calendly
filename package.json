@@ -67,7 +67,7 @@
     "rollup-plugin-peer-deps-external": "^2.2.0",
     "rollup-plugin-url": "^1.4.0",
     "ts-jest": "^24.3.0",
-    "typescript": "^3.7.5",
+    "typescript": "^4.0.5",
     "react-docgen-typescript-loader": "^3.7.1",
     "ts-loader": "^6.2.2"
   },
