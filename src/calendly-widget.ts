@@ -508,7 +508,7 @@ export default () => (
           var t, e, n, o, i;
           if (!this.options.prefill) return null;
           if (
-            ((e = ["name", "firstName", "lastName", "email"]),
+            ((e = ["name", "firstName", "lastName", "email", "location"]),
             (n = window.Calendly._util.snakeCaseKeys(
               window.Calendly._util.pick(this.options.prefill, e)
             )),
