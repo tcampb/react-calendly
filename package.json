@@ -58,6 +58,7 @@
     "mini-css-extract-plugin": "^0.9.0",
     "prettier": "2.0.2",
     "react": "^16.4.1",
+    "react-docgen-typescript-loader": "^3.7.1",
     "react-dom": "^16.4.1",
     "react-scripts": "3.3.0",
     "rollup": "^0.62.0",
@@ -67,9 +68,8 @@
     "rollup-plugin-peer-deps-external": "^2.2.0",
     "rollup-plugin-url": "^1.4.0",
     "ts-jest": "^24.3.0",
-    "typescript": "^4.0.5",
-    "react-docgen-typescript-loader": "^3.7.1",
-    "ts-loader": "^6.2.2"
+    "ts-loader": "^6.2.2",
+    "typescript": "^4.0.5"
   },
   "files": [
     "dist",
