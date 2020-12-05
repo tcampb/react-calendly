@@ -5,7 +5,7 @@ import faker from 'faker'
 import PopupWidget from './PopupWidget';
  
 describe('PopupWidget', () => {
-  it.only('renders PopupWidget component', () => {
+  it('renders PopupWidget component', () => {
     const url = faker.internet.url()
     const buttonText = faker.lorem.sentence()
     render(<PopupWidget url={url} text={buttonText} />)
