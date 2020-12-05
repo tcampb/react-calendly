@@ -1,15 +1,48 @@
 import * as React from "react";
 import { CalendlyEvent } from "../../calendly";
 
-type CalendlyEventMessage = MessageEvent & {
-  data: { event: CalendlyEvent };
-};
+type DateAndTimeSelectedEvent = MessageEvent<{
+  event: CalendlyEvent.DATE_AND_TIME_SELECTED;
+  payload: {};
+}>;
+
+type EventScheduledEvent = MessageEvent<{
+  event: CalendlyEvent.EVENT_SCHEDULED;
+  payload: {
+    event: {
+      /**
+       * @description Canonical reference (unique identifier) to the event that was scheduled.
+       * @example https://calendly.com/api/v2/scheduled_events/AAAAAAAAAAAAAA
+       * @see {@link https://developer.calendly.com/docs/api-docs/reference/calendly-api/openapi.yaml/paths/~1scheduled_events~1%7Buuid%7D/get} for further information.
+       */
+      uri: string;
+    };
+    invitee: {
+      /**
+       * @description Canonical reference (unique identifier) for the invitee who scheduled the event.
+       * @example https://calendly.com/api/v2/scheduled_events/AAAAAAAAAAAAAA/invitees/AAAAAAAAAAAAAA
+       * @see {@link https://developer.calendly.com/docs/api-docs/reference/calendly-api/openapi.yaml/paths/~1scheduled_events~1%7Bevent_uuid%7D~1invitees~1%7Binvitee_uuid%7D/get} for further information.
+       */
+      uri: string;
+    };
+  };
+}>;
+
+type EventTypeViewedEvent = MessageEvent<{
+  event: CalendlyEvent.EVENT_TYPE_VIEWED;
+  payload: {};
+}>;
+
+type ProfilePageViewedEvent = MessageEvent<{
+  event: CalendlyEvent.PROFILE_PAGE_VIEWED;
+  payload: {};
+}>;
 
 type Props = {
-  onDateAndTimeSelected?: (e: CalendlyEventMessage) => any;
-  onEventScheduled?: (e: CalendlyEventMessage) => any;
-  onEventTypeViewed?: (e: CalendlyEventMessage) => any;
-  onProfilePageViewed?: (e: CalendlyEventMessage) => any;
+  onDateAndTimeSelected?: (e: DateAndTimeSelectedEvent) => any;
+  onEventScheduled?: (e: EventScheduledEvent) => any;
+  onEventTypeViewed?: (e: EventTypeViewedEvent) => any;
+  onProfilePageViewed?: (e: ProfilePageViewedEvent) => any;
 };
 
 class CalendlyEventListener extends React.Component<Props> {
@@ -42,7 +75,7 @@ class CalendlyEventListener extends React.Component<Props> {
   }
 
   render() {
-    return this.props.children;
+    return this.props.children || null;
   }
 }
 

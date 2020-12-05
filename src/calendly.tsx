@@ -29,6 +29,7 @@ export type Prefill = Optional<{
   email: string;
   firstName: string;
   lastName: string;
+  location: string;
   customAnswers: Optional<{
     a1: string;
     a2: string;
@@ -142,7 +143,9 @@ export const withPageSettings = (url: string, pageSettings?: PageSettings) => {
   return `${baseUrl}?${updatedQueryString}`;
 };
 
-export const openPopupWidget = (options: PopupWidgetOptions & { pageSettings?: PageSettings }) => {
+export const openPopupWidget = (
+  options: PopupWidgetOptions & { pageSettings?: PageSettings }
+) => {
   loadStyleSheet();
   loadScript();
 
@@ -153,11 +156,11 @@ export const openPopupWidget = (options: PopupWidgetOptions & { pageSettings?: P
   };
 
   window.Calendly.initPopupWidget(widgetOptions);
-}
+};
 
 export const closePopupWidget = () => {
   loadStyleSheet();
   loadScript();
 
   window.Calendly.closePopupWidget();
-}
+};
