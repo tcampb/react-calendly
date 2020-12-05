@@ -64,7 +64,6 @@
     "mini-css-extract-plugin": "^1.2.1",
     "prettier": "2.1.2",
     "react": "^16.4.1",
-    "react-docgen-typescript-loader": "^3.7.2",
     "react-dom": "^16.4.1",
     "react-scripts": "4.0.0",
     "rollup": "^2.33.0",
