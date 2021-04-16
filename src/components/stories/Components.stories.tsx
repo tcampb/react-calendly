@@ -73,6 +73,7 @@ storiesOf("Components", module)
       utm={object("utm", utm)}
       pageSettings={object("pageSettings", pageSettings)}
       styles={object("styles", {})}
+      className={text("className", "")}
     />
   ))
   .add("PopupWidget", () => (
@@ -92,15 +93,24 @@ storiesOf("Components", module)
       url: text("url", "https://calendly.com/acmesales"),
       pageSettings: object("pageSettings", pageSettings),
       utm: object("utm", utm),
-      prefill: object("prefill", prefill)
-    }
+      prefill: object("prefill", prefill),
+    };
 
     return (
       <div>
-        <h4 style={{ textAlign: 'center' }}> Use the <code>openPopupWidget</code> function to create a custom button that will open the pop-up scheduler when clicked.</h4>
-        <button style={{ display: 'block', margin: '0 auto' }} onClick={() => openPopupWidget(options)}>Custom Button</button>
+        <h4 style={{ textAlign: "center" }}>
+          {" "}
+          Use the <code>openPopupWidget</code> function to create a custom
+          button that will open the pop-up scheduler when clicked.
+        </h4>
+        <button
+          style={{ display: "block", margin: "0 auto" }}
+          onClick={() => openPopupWidget(options)}
+        >
+          Custom Button
+        </button>
       </div>
-    )
+    );
   })
   .add("CalendlyEventListener", () => {
     const eventId = "calendly-event";
@@ -126,7 +136,9 @@ storiesOf("Components", module)
             >
               here
             </a>
-            {". You must specify your host in the iframe's src with the embed_domain parameter."}
+            {
+              ". You must specify your host in the iframe's src with the embed_domain parameter."
+            }
           </h4>
           <div>
             Calendly Event: <span id={eventId}></span>

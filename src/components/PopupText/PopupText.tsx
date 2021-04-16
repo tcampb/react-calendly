@@ -15,6 +15,7 @@ export interface Props {
   utm?: Utm;
   pageSettings?: PageSettings;
   styles?: React.CSSProperties | undefined;
+  className?: string;
 }
 
 export interface PopupWidgetOptions {
@@ -51,7 +52,12 @@ class PopupText extends React.Component<Props> {
       utm: this.props.utm,
     };
     return (
-      <a href="" onClick={createClickHandler(widgetOptions)} style={this.props.styles || {}}>
+      <a
+        href="#0"
+        onClick={createClickHandler(widgetOptions)}
+        style={this.props.styles || {}}
+        className={this.props.className || ""}
+      >
         {this.props.text}
       </a>
     );
