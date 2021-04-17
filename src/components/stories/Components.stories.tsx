@@ -11,7 +11,7 @@ const {
 import { storiesOf } from "@storybook/react";
 import { withInfo } from "@storybook/addon-info";
 import InlineWidget from "../InlineWidget/InlineWidget";
-import PopupText from "../PopupText/PopupText";
+import PopupButton from "../PopupButton/PopupButton";
 import PopupWidget from "../PopupWidget/PopupWidget";
 import CalendlyEventListener from "../CalendlyEventListener/CalendlyEventListener";
 import { PageSettings, Utm, Prefill, openPopupWidget } from "../../calendly";
@@ -65,8 +65,8 @@ storiesOf("Components", module)
       pageSettings={object("pageSettings", pageSettings)}
     />
   ))
-  .add("PopupText", () => (
-    <PopupText
+  .add("PopupButton", () => (
+    <PopupButton
       url={text("url", "https://calendly.com/acmesales")}
       text={text("text", "Click here to schedule!")}
       prefill={object("prefill", prefill)}

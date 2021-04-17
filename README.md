@@ -26,7 +26,7 @@ Ensure that React has been included into your page or component. Then, you can i
 
 - [InlineWidget](https://tcampb.github.io/react-calendly/?path=/story/components--inlinewidget)
 - [PopupWidget](https://tcampb.github.io/react-calendly/?path=/story/components--popupwidget)
-- [PopupText](https://tcampb.github.io/react-calendly/?path=/story/components--popuptext)
+- [PopupButton](https://tcampb.github.io/react-calendly/?path=/story/components--popupbutton)
 - [Custom Button](https://tcampb.github.io/react-calendly/?path=/story/components--custom-button)
 - [CalendlyEventListener](https://tcampb.github.io/react-calendly/?path=/story/components--calendlyeventlistener)
 

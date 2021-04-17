@@ -291,7 +291,7 @@ export default () => (
       }),
       (window.Calendly.initPopupWidget = function (t) {
         return window.Calendly._util.domReady(function () {
-          return window.Calendly.showPopupWidget(t.url, "PopupText", t);
+          return window.Calendly.showPopupWidget(t.url, "PopupButton", t);
         });
       }),
       (window.Calendly.initInlineWidget = function (t) {
@@ -305,7 +305,7 @@ export default () => (
       (window.Calendly.showPopupWidget = function (t, e, n) {
         var o;
         return (
-          null == e && (e = "PopupText"),
+          null == e && (e = "PopupButton"),
           null == n && (n = {}),
           window.Calendly.closePopupWidget(),
           (o = function () {
