@@ -15,6 +15,7 @@ export interface Props {
   utm?: Utm;
   pageSettings?: PageSettings;
   styles?: React.CSSProperties | undefined;
+  className?: string;
 }
 
 export interface PopupWidgetOptions {
@@ -28,13 +29,13 @@ const initWidget = (options: PopupWidgetOptions) => {
 };
 
 const createClickHandler = (widgetOptions: PopupWidgetOptions) => (
-  e: React.MouseEvent<HTMLAnchorElement, MouseEvent>
+  e: React.MouseEvent<HTMLButtonElement, MouseEvent>
 ) => {
   e.preventDefault();
   return initWidget(widgetOptions);
 };
 
-class PopupText extends React.Component<Props> {
+class PopupButton extends React.Component<Props> {
   componentWillUnmount() {
     window.Calendly.closePopupWidget();
   }
@@ -51,11 +52,15 @@ class PopupText extends React.Component<Props> {
       utm: this.props.utm,
     };
     return (
-      <a href="" onClick={createClickHandler(widgetOptions)} style={this.props.styles || {}}>
+      <button
+        onClick={createClickHandler(widgetOptions)}
+        style={this.props.styles || {}}
+        className={this.props.className || ""}
+      >
         {this.props.text}
-      </a>
+      </button>
     );
   }
 }
 
-export default PopupText;
+export default PopupButton;

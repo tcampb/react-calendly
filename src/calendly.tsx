@@ -3,7 +3,7 @@ import initializeCalendly from "./calendly-widget";
 import { CALENDLY_STYLESHEET_SOURCE } from "./constants";
 
 import { InlineWidgetOptions } from "./components/InlineWidget/InlineWidget";
-import { PopupWidgetOptions } from "./components/PopupText/PopupText";
+import { PopupWidgetOptions } from "./components/PopupButton/PopupButton";
 
 export interface ICalendly {
   initInlineWidget(options: InlineWidgetOptions): void;
