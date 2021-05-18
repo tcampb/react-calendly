@@ -1,12 +1,12 @@
 import * as React from "react";
 import {
   loadScript,
-  loadStyleSheet,
   PageSettings,
   withPageSettings,
   Prefill,
   Utm,
 } from "../../calendly";
+import '../../calendly-widget.css'
 
 export interface Props {
   url: string;
@@ -42,7 +42,6 @@ class PopupButton extends React.Component<Props> {
 
   componentDidMount() {
     loadScript();
-    loadStyleSheet();
   }
 
   render() {
