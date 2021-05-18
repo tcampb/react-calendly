@@ -30,7 +30,7 @@ export type Prefill = Optional<{
   firstName: string;
   lastName: string;
   location: string;
-  guests: string;
+  guests: string[];
   customAnswers: Optional<{
     a1: string;
     a2: string;

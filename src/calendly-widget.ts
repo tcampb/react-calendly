@@ -508,14 +508,7 @@ export default () => (
           var t, e, n, o, i;
           if (!this.options.prefill) return null;
           if (
-            ((e = [
-              "name",
-              "firstName",
-              "lastName",
-              "email",
-              "location",
-              "guests",
-            ]),
+            ((e = ["name", "firstName", "lastName", "email", "location"]),
             (n = window.Calendly._util.snakeCaseKeys(
               window.Calendly._util.pick(this.options.prefill, e)
             )),
@@ -523,6 +516,13 @@ export default () => (
           ) {
             o = this.options.prefill.customAnswers;
             for (t in o) (i = o[t]), t.match(/^a\d{1,2}$/) && (n[t] = i);
+          }
+          if (
+            this.options.prefill.guests &&
+            Array.isArray(this.options.prefill.guests) &&
+            this.options.prefill.guests.length > 0
+          ) {
+            n["guests"] = this.options.prefill.guests.join(",");
           }
           return n;
         }),
