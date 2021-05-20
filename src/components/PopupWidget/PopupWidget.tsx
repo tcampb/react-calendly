@@ -1,7 +1,7 @@
 import * as React from "react";
+import '../../calendly-widget.css';
 import {
   loadScript,
-  loadStyleSheet,
   PageSettings,
   withPageSettings,
   Prefill,
@@ -39,7 +39,6 @@ class PopupWidget extends React.Component<Props> {
 
   componentDidMount() {
     loadScript();
-    loadStyleSheet();
 
     const options = {
       ...defaultProps,

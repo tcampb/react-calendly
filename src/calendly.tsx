@@ -1,6 +1,5 @@
 import { Props as BadgeWidgetOptions } from "./components/PopupWidget/PopupWidget";
 import initializeCalendly from "./calendly-widget";
-import { CALENDLY_STYLESHEET_SOURCE } from "./constants";
 
 import { InlineWidgetOptions } from "./components/InlineWidget/InlineWidget";
 import { PopupWidgetOptions } from "./components/PopupButton/PopupButton";
@@ -97,15 +96,6 @@ export const loadScript = () => {
   }
 };
 
-export const loadStyleSheet = () => {
-  if (!document.querySelector(`link[href="${CALENDLY_STYLESHEET_SOURCE}"]`)) {
-    const link = document.createElement("link");
-    link.rel = "stylesheet";
-    link.href = CALENDLY_STYLESHEET_SOURCE;
-    document.body.appendChild(link);
-  }
-};
-
 export const withPageSettings = (url: string, pageSettings?: PageSettings) => {
   if (!pageSettings) return url;
 
@@ -139,7 +129,6 @@ export const withPageSettings = (url: string, pageSettings?: PageSettings) => {
 export const openPopupWidget = (
   options: PopupWidgetOptions & { pageSettings?: PageSettings }
 ) => {
-  loadStyleSheet();
   loadScript();
 
   const widgetOptions: PopupWidgetOptions = {
@@ -152,7 +141,6 @@ export const openPopupWidget = (
 };
 
 export const closePopupWidget = () => {
-  loadStyleSheet();
   loadScript();
 
   window.Calendly.closePopupWidget();
