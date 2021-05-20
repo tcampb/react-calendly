@@ -1,4 +1,5 @@
 import * as React from "react";
+import '../../calendly-widget.css'
 import {
   loadScript,
   PageSettings,
@@ -6,7 +7,6 @@ import {
   Prefill,
   Utm,
 } from "../../calendly";
-import '../../calendly-widget.css'
 
 export interface Props {
   url: string;

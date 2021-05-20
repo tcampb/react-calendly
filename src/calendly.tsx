@@ -1,6 +1,5 @@
 import { Props as BadgeWidgetOptions } from "./components/PopupWidget/PopupWidget";
 import initializeCalendly from "./calendly-widget";
-// import { CALENDLY_STYLESHEET_SOURCE } from "./constants";
 
 import { InlineWidgetOptions } from "./components/InlineWidget/InlineWidget";
 import { PopupWidgetOptions } from "./components/PopupButton/PopupButton";
