@@ -92,6 +92,10 @@ prefill={{
   firstName: 'Jon',
   lastName: 'Snow',
   name: 'Jon Snow',
+  guests: [
+    'janedoe@example.com',
+    'johndoe@example.com'
+  ],
   customAnswers: {
     a1: 'a1',
     a2: 'a2',

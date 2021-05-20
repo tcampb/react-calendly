@@ -517,6 +517,13 @@ export default () => (
             o = this.options.prefill.customAnswers;
             for (t in o) (i = o[t]), t.match(/^a\d{1,2}$/) && (n[t] = i);
           }
+          if (
+            this.options.prefill.guests &&
+            Array.isArray(this.options.prefill.guests) &&
+            this.options.prefill.guests.length > 0
+          ) {
+            n["guests"] = this.options.prefill.guests.join(",");
+          }
           return n;
         }),
         (t.prototype.getDomain = function () {
