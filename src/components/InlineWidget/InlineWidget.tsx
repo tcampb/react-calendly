@@ -132,9 +132,10 @@ class InlineWidget extends React.Component<Props> {
   private shouldWidgetUpdate(prevProps: Props) {
     return (
       prevProps.url !== this.props.url ||
-      prevProps.pageSettings !== this.props.pageSettings ||
-      prevProps.prefill !== this.props.prefill ||
-      prevProps.utm !== this.props.utm
+      ["pageSettings", "prefill", "utm"].some(
+        (prop) =>
+          JSON.stringify(prevProps[prop]) !== JSON.stringify(this.props[prop])
+      )
     );
   }
 }
