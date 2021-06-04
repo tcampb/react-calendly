@@ -22,5 +22,5 @@ export default {
       sourcemap: true,
     },
   ],
-  plugins: [external(), postcss({ modules: true }), url(), resolve(), typescript(), commonjs()],
+  plugins: [external(), postcss(), url(), resolve(), typescript(), commonjs()],
 };
