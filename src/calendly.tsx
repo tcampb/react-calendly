@@ -88,6 +88,11 @@ export type PageSettings = Optional<{
    * @see {@link https://help.calendly.com/hc/en-us/articles/223147027-Embed-options-overview#3} for further information.
    */
   primaryColor: string;
+  /**
+   * @description The General Data Protection Regulation governs data protection in the EU and EEA. Certain Calendly integrations require access to cookies with user information. If you do not embed the GDPR banner, users in those areas will not have the ability to give their consent in order to access integrations such as Google Analytics, Facebook Pixel, PayPal, and Stripe.
+   * @see {@link https://help.calendly.com/hc/en-us/articles/360007385493-Cookie-FAQs} for further information.
+   */
+  hideGdprBanner: boolean;
 }>;
 
 export const loadScript = () => {
@@ -105,6 +110,7 @@ export const withPageSettings = (url: string, pageSettings?: PageSettings) => {
     hideLandingPageDetails,
     primaryColor,
     textColor,
+    hideGdprBanner,
   } = pageSettings;
 
   const queryStringIndex = url.indexOf("?");
@@ -119,6 +125,7 @@ export const withPageSettings = (url: string, pageSettings?: PageSettings) => {
     hideLandingPageDetails ? `hide_landing_page_details=1` : null,
     primaryColor ? `primary_color=${primaryColor}` : null,
     textColor ? `text_color=${textColor}` : null,
+    hideGdprBanner ? `hide_gdpr_banner=1` : null,
   ]
     .filter((item) => item !== null)
     .join("&");
