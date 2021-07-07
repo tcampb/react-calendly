@@ -50,6 +50,7 @@ const pageSettings: PageSettings = {
   hideLandingPageDetails: false,
   primaryColor: "00a2ff",
   textColor: "4d5055",
+  hideGdprBanner: true,
 };
 
 storiesOf("Components", module)
