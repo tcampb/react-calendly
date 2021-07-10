@@ -107,7 +107,8 @@ prefill={{
     a8: 'a8',
     a9: 'a9',
     a10: 'a10'
-  }
+  },
+  date: new Date(Date.now() + 86400000)
 }}
 ```
 
