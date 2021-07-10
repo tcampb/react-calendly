@@ -2,7 +2,7 @@
 
 [Calendly integration](https://help.calendly.com/hc/en-us/articles/223147027-Embed-options-overview) for React apps
 
-[![NPM](https://img.shields.io/npm/v/react-calendly.svg)](https://www.npmjs.com/package/react-calendly) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+[![NPM](https://img.shields.io/npm/v/react-calendly.svg)](https://www.npmjs.com/package/react-calendly) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com) [![](https://raw.githubusercontent.com/storybooks/brand/master/badge/badge-storybook.svg)](https://tcampb.github.io/react-calendly)
 
 ---
 
