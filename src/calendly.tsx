@@ -42,6 +42,7 @@ export type Prefill = Optional<{
     a9: string;
     a10: string;
   }>;
+  date: Date;
 }>;
 
 export enum CalendlyEvent {
