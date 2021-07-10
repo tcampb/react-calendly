@@ -524,6 +524,17 @@ export default () => (
           ) {
             n["guests"] = this.options.prefill.guests.join(",");
           }
+          if (this.options.prefill.date && this.options.prefill.date instanceof Date) {
+            var month = this.options.prefill.date.getMonth() + 1;
+            var day = this.options.prefill.date.getDate();
+            var year = this.options.prefill.date.getFullYear();
+
+            n["date"] = [
+              year,
+              month < 10 ? `0${month}` : month,
+              day < 10 ? `0${day}` : day
+            ].join('-');
+          }
           return n;
         }),
         (t.prototype.getDomain = function () {

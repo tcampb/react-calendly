@@ -34,6 +34,7 @@ const prefill: Prefill = {
     a9: "a9",
     a10: "a10",
   },
+  date: (new Date(new Date().setDate(new Date().getDate() + 1)))
 };
 
 const utm: Utm = {
