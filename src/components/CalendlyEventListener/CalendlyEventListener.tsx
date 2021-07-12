@@ -1,12 +1,12 @@
 import * as React from "react";
 import { CalendlyEvent } from "../../calendly";
 
-type DateAndTimeSelectedEvent = MessageEvent<{
+export type DateAndTimeSelectedEvent = MessageEvent<{
   event: CalendlyEvent.DATE_AND_TIME_SELECTED;
   payload: {};
 }>;
 
-type EventScheduledEvent = MessageEvent<{
+export type EventScheduledEvent = MessageEvent<{
   event: CalendlyEvent.EVENT_SCHEDULED;
   payload: {
     event: {
@@ -28,12 +28,12 @@ type EventScheduledEvent = MessageEvent<{
   };
 }>;
 
-type EventTypeViewedEvent = MessageEvent<{
+export type EventTypeViewedEvent = MessageEvent<{
   event: CalendlyEvent.EVENT_TYPE_VIEWED;
   payload: {};
 }>;
 
-type ProfilePageViewedEvent = MessageEvent<{
+export type ProfilePageViewedEvent = MessageEvent<{
   event: CalendlyEvent.PROFILE_PAGE_VIEWED;
   payload: {};
 }>;
