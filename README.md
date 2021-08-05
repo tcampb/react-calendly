@@ -5,6 +5,7 @@
 [![NPM](https://img.shields.io/npm/v/react-calendly.svg)](https://www.npmjs.com/package/react-calendly) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com) [![](https://raw.githubusercontent.com/storybooks/brand/master/badge/badge-storybook.svg)](https://tcampb.github.io/react-calendly)
 
 ---
+<img width="1402" alt="react-calendly" src="https://user-images.githubusercontent.com/33756113/128376592-3cef4ef7-5c8b-4a07-a360-d83da17fff1d.png">
 
 ## Installation
 
