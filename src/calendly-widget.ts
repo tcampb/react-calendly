@@ -420,14 +420,14 @@ export default () => (
             (this.node.width = "100%"),
             (this.node.height = "100%"),
             (this.node.frameBorder = "0"),
-            (this.node.onload = function () {
-              var calendlySpinnerElement = document.querySelector(
+            (this.node.onload = (function () {
+              var calendlySpinnerElement = this.node.parentElement.querySelector(
                 ".calendly-spinner"
               );
               if (calendlySpinnerElement) {
                 calendlySpinnerElement.style.visibility = "hidden";
               }
-            })
+            }).bind(this))
           );
         }),
         (t.prototype.inject = function () {
