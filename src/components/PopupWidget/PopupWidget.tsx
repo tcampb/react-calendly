@@ -6,6 +6,7 @@ import {
   withPageSettings,
   Prefill,
   Utm,
+  IframeTitle
 } from "../../calendly";
 
 export interface Props {
@@ -17,6 +18,7 @@ export interface Props {
   prefill?: Prefill;
   utm?: Utm;
   pageSettings?: PageSettings;
+  iframeTitle?: IframeTitle;
 }
 
 const defaultProps: Partial<Props> = {
