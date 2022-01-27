@@ -6,6 +6,7 @@ import {
   withPageSettings,
   Prefill,
   Utm,
+  IframeTitle
 } from "../../calendly";
 
 export interface Props {
@@ -16,12 +17,14 @@ export interface Props {
   pageSettings?: PageSettings;
   styles?: React.CSSProperties | undefined;
   className?: string;
+  iframeTitle?: IframeTitle
 }
 
 export interface PopupWidgetOptions {
   url: string;
   prefill?: Prefill;
   utm?: Utm;
+  iframeTitle?: IframeTitle
 }
 
 const initWidget = (options: PopupWidgetOptions) => {
@@ -49,6 +52,7 @@ class PopupButton extends React.Component<Props> {
       url: withPageSettings(this.props.url, this.props.pageSettings),
       prefill: this.props.prefill,
       utm: this.props.utm,
+      iframeTitle: this.props.iframeTitle
     };
     return (
       <button

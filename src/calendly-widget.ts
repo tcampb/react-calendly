@@ -414,12 +414,15 @@ export default () => (
             throw "Calendly: Widget URL not set";
         }),
         (t.prototype.build = function () {
+          var iframeTitle = this.options && this.options.iframeTitle
+
           return (
             (this.node = document.createElement("iframe")),
             (this.node.src = this.getSource()),
             (this.node.width = "100%"),
             (this.node.height = "100%"),
             (this.node.frameBorder = "0"),
+            (this.node.title = iframeTitle || "Calendly Scheduling Page"),
             (this.node.onload = (function () {
               var calendlySpinnerElement = this.node.parentElement.querySelector(
                 ".calendly-spinner"

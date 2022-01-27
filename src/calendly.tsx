@@ -60,6 +60,12 @@ export type Utm = Optional<{
   utmTerm: string;
 }>;
 
+/**
+ * @description The default title is Calendly Scheduling Page
+ * @see {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/title}
+ */
+export type IframeTitle = string;
+
 export type PageSettings = Optional<{
   /**
    * @description Use this setting to hide your profile picture, name, event duration, location, and description when Calendly is embedded. This will help reduce duplicate information that you may already have on your web page.
@@ -143,6 +149,7 @@ export const openPopupWidget = (
     url: withPageSettings(options.url, options.pageSettings),
     prefill: options.prefill,
     utm: options.utm,
+    iframeTitle: options.iframeTitle
   };
 
   window.Calendly.initPopupWidget(widgetOptions);

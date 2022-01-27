@@ -6,6 +6,7 @@ import {
   withPageSettings,
   Prefill,
   Utm,
+  IframeTitle
 } from "../../calendly";
 
 export interface Props {
@@ -14,6 +15,7 @@ export interface Props {
   utm?: Utm;
   styles?: React.CSSProperties | undefined;
   pageSettings?: PageSettings;
+  iframeTitle?: IframeTitle
 }
 
 export interface InlineWidgetOptions {
@@ -21,6 +23,7 @@ export interface InlineWidgetOptions {
   parentElement: HTMLElement;
   prefill?: Prefill;
   utm?: Utm;
+  iframeTitle?: IframeTitle
 }
 
 const defaultStyles = {
@@ -69,6 +72,7 @@ class InlineWidget extends React.Component<Props> {
       parentElement: this.widgetParentContainerRef.current!,
       prefill: this.props.prefill,
       utm: this.props.utm,
+      iframeTitle: this.props.iframeTitle
     });
   }
 
@@ -97,6 +101,7 @@ class InlineWidget extends React.Component<Props> {
       parentElement: this.widgetParentContainerRef.current!,
       prefill: this.props.prefill,
       utm: this.props.utm,
+      iframeTitle: this.props.iframeTitle
     });
   }
 
@@ -132,7 +137,7 @@ class InlineWidget extends React.Component<Props> {
   private shouldWidgetUpdate(prevProps: Props) {
     return (
       prevProps.url !== this.props.url ||
-      ["pageSettings", "prefill", "utm"].some(
+      ["pageSettings", "prefill", "utm", "iframeTitle"].some(
         (prop) =>
           JSON.stringify(prevProps[prop]) !== JSON.stringify(this.props[prop])
       )

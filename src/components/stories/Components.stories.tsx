@@ -66,6 +66,7 @@ storiesOf("Components", module)
       prefill={object("prefill", prefill)}
       utm={object("utm", utm)}
       pageSettings={object("pageSettings", pageSettings)}
+      iframeTitle={text("iframeTitle", "Calendly Scheduling Page")}
     />
   ))
   .add("PopupButton", () => (
@@ -77,6 +78,7 @@ storiesOf("Components", module)
       pageSettings={object("pageSettings", pageSettings)}
       styles={object("styles", {})}
       className={text("className", "")}
+      iframeTitle={text("iframeTitle", "Calendly Scheduling Page")}
     />
   ))
   .add("PopupWidget", () => (
@@ -89,6 +91,7 @@ storiesOf("Components", module)
       prefill={object("prefill", prefill)}
       utm={object("utm", utm)}
       pageSettings={object("pageSettings", pageSettings)}
+      iframeTitle={text("iframeTitle", "Calendly Scheduling Page")}
     />
   ))
   .add("Custom Button", () => {
@@ -97,6 +100,7 @@ storiesOf("Components", module)
       pageSettings: object("pageSettings", pageSettings),
       utm: object("utm", utm),
       prefill: object("prefill", prefill),
+      iframeTitle: text("iframeTitle", "Calendly Scheduling Page"),
     };
 
     return (
