@@ -3,7 +3,7 @@ import * as ReactDom from "react-dom";
 import ModalContent, { Props as ModalContentProps } from "./ModalContent";
 
 interface Props extends ModalContentProps {
-  onModalClose: (e: React.SyntheticEvent) => void;
+  onModalClose: (e: React.MouseEvent<HTMLButtonElement>) => void;
   open: boolean;
   rootElement: HTMLElement;
 }
@@ -19,11 +19,16 @@ export default (props: Props) => {
           <ModalContent {...props} />
         </div>
       </div>
-      <div
+      <button
         className="calendly-popup-close"
         onClick={props.onModalClose}
         aria-label="Close modal"
-      ></div>
+        style={{
+          display: "block",
+          border: "none",
+          padding: 0,
+        }}
+      ></button>
     </div>,
     props.rootElement
   );

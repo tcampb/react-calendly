@@ -29,6 +29,7 @@ Ensure that React has been included into your page or component. Then, you can i
 - [InlineWidget](https://tcampb.github.io/react-calendly/?path=/story/components--inlinewidget)
 - [PopupWidget](https://tcampb.github.io/react-calendly/?path=/story/components--popupwidget)
 - [PopupButton](https://tcampb.github.io/react-calendly/?path=/story/components--popupbutton)
+- [Custom Button](https://tcampb.github.io/react-calendly/?path=/story/components--custom-button)
 - [CalendlyEventListener](https://tcampb.github.io/react-calendly/?path=/story/components--calendlyeventlistener)
 
 #### InlineWidget
@@ -61,7 +62,7 @@ const App = () => {
         url="https://calendly.com/your_scheduling_page"
         /*
          * react-calendly uses React's Portal feature (https://reactjs.org/docs/portals.html) to render the popup modal. As a result, you'll need to
-         * specify the rootElement property to ensure that the modal into the correct domNode.
+         * specify the rootElement property to ensure that the modal is inserted into the correct domNode.
          */
         rootElement={document.getElementById("root")}
         text="Click here to schedule!"
@@ -88,7 +89,7 @@ const App = () => {
         url="https://calendly.com/your_scheduling_page"
         /*
          * react-calendly uses React's Portal feature (https://reactjs.org/docs/portals.html) to render the popup modal. As a result, you'll need to
-         * specify the rootElement property to ensure that the modal into the correct domNode.
+         * specify the rootElement property to ensure that the modal is inserted into the correct domNode.
          */
         rootElement={document.getElementById("root")}
         text="Click here to schedule!"
@@ -169,6 +170,48 @@ utm={{
 #### Why are my page settings not working?
 
 For the page settings to work, you'll need to pass in a `url` prop that is associated with a Calendly account on the [Pro plan](https://calendly.com/pages/pricing).
+
+#### How do I create a custom button that triggers a pop-up scheduler?
+
+```tsx
+import { PopupModal } from "react-calendly";
+
+class CustomButtonExample extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      isOpen: false,
+    };
+  }
+
+  render() {
+    return (
+      <div>
+        <button
+          style={{ display: "block", margin: "0 auto" }}
+          onClick={() => this.setState({ isOpen: true })}
+        >
+          Custom Button
+        </button>
+        <PopupModal
+          url="https://calendly.com/acmesales"
+          pageSettings={this.props.pageSettings}
+          utm={this.props.utm}
+          prefill={this.props.prefill}
+          onModalClose={() => this.setState({ isOpen: false })}
+          open={this.state.isOpen}
+          /*
+           * react-calendly uses React's Portal feature (https://reactjs.org/docs/portals.html) to render the popup modal. As a result, you'll need to
+           * specify the rootElement property to ensure that the modal is inserted into the correct domNode.
+           */
+          rootElement={document.getElementById("root")}
+        />
+      </div>
+    );
+  }
+}
+```
 
 #### How can I access the event details when an event is scheduled?
 

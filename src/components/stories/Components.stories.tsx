@@ -13,6 +13,7 @@ import { withInfo } from "@storybook/addon-info";
 import InlineWidget from "../InlineWidget/InlineWidget";
 import PopupButton from "../PopupButton/PopupButton";
 import PopupWidget from "../PopupWidget/PopupWidget";
+import PopupModal from "../PopupModal/Modal";
 import CalendlyEventListener from "../CalendlyEventListener/CalendlyEventListener";
 import { PageSettings, Utm, Prefill } from "../../calendly";
 
@@ -96,6 +97,43 @@ storiesOf("Components", module)
       rootElement={document.getElementById("root")!}
     />
   ))
+  .add("Custom Button", () => {
+    class CustomButtonExample extends React.Component {
+      state = {
+        isOpen: false,
+      };
+
+      render() {
+        return (
+          <div>
+            <h4 style={{ textAlign: "center" }}>
+              {" "}
+              Use the <code>PopupModal</code> component to create a custom
+              button that will open the pop-up scheduler when clicked.
+            </h4>
+            <button
+              style={{ display: "block", margin: "0 auto" }}
+              onClick={() => this.setState({ isOpen: true })}
+            >
+              Custom Button
+            </button>
+            <PopupModal
+              url={text("url", "https://calendly.com/acmesales")}
+              pageSettings={object("pageSettings", pageSettings)}
+              utm={object("utm", utm)}
+              prefill={object("prefill", prefill)}
+              iframeTitle={text("iframeTitle", "Calendly Scheduling Page")}
+              onModalClose={() => this.setState({ isOpen: false })}
+              open={this.state.isOpen}
+              rootElement={document.getElementById("root")!}
+            />
+          </div>
+        );
+      }
+    }
+
+    return <CustomButtonExample />;
+  })
   .add("CalendlyEventListener", () => {
     const eventId = "calendly-event";
     const instructions =
@@ -144,7 +182,7 @@ storiesOf("Components", module)
               frameBorder="0"
               height="100%"
               width="100%"
-              src={`https://calendly.com/acmesales?embed_domain=1&embed_type=Inline`}
+              src={`https://calendly.com/acmesales?embed_domain=${document.location.host}&embed_type=Inline`}
             />
           </div>
         </CalendlyEventListener>

@@ -1,7 +1,7 @@
 import * as React from "react";
 import "../../calendly-widget.css";
 import { PageSettings, Prefill, Utm, IframeTitle } from "../../calendly";
-import Modal from "../Modal/Modal";
+import Modal from "../PopupModal/Modal";
 
 export interface Props {
   url: string;
@@ -57,7 +57,6 @@ class PopupButton extends React.Component<Props, { isOpen: boolean }> {
           open={this.state.isOpen}
           onModalClose={this.onClose}
           rootElement={this.props.rootElement}
-          embedType={"PopupButton"}
         />
       </>
     );

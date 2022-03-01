@@ -16,7 +16,6 @@ export interface Props {
   styles?: React.CSSProperties | undefined;
   pageSettings?: PageSettings;
   iframeTitle?: IframeTitle;
-  embedType?: "Inline" | "PopupWidget" | "PopupButton";
 }
 
 class ModalContent extends React.Component<Props, { isLoading: boolean }> {
@@ -42,7 +41,7 @@ class ModalContent extends React.Component<Props, { isLoading: boolean }> {
       pageSettings: this.props.pageSettings,
       prefill: this.props.prefill,
       utm: this.props.utm,
-      embedType: this.props.embedType,
+      embedType: "PopupWidget",
     });
 
     return (
