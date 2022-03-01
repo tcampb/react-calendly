@@ -3,7 +3,8 @@
 ## 3.0.0
 
 - Removes Calendly widget script dependency (https://assets.calendly.com/assets/external/widget.js).
-- `openPopupWidget` & `closePopupWidget` functions.
+- Removes `openPopupWidget` and `closePopupWidget` functions (replaced by `PopupModal` component).
+- Adds `PopupModal` component.
 
 ## 2.2.3
 
