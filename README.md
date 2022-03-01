@@ -5,6 +5,7 @@
 [![NPM](https://img.shields.io/npm/v/react-calendly.svg)](https://www.npmjs.com/package/react-calendly) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com) [![](https://raw.githubusercontent.com/storybooks/brand/master/badge/badge-storybook.svg)](https://tcampb.github.io/react-calendly)
 
 ---
+
 <img width="1402" alt="react-calendly" src="https://user-images.githubusercontent.com/33756113/128376592-3cef4ef7-5c8b-4a07-a360-d83da17fff1d.png">
 
 ## Installation
@@ -28,23 +29,9 @@ Ensure that React has been included into your page or component. Then, you can i
 - [InlineWidget](https://tcampb.github.io/react-calendly/?path=/story/components--inlinewidget)
 - [PopupWidget](https://tcampb.github.io/react-calendly/?path=/story/components--popupwidget)
 - [PopupButton](https://tcampb.github.io/react-calendly/?path=/story/components--popupbutton)
-- [Custom Button](https://tcampb.github.io/react-calendly/?path=/story/components--custom-button)
 - [CalendlyEventListener](https://tcampb.github.io/react-calendly/?path=/story/components--calendlyeventlistener)
 
-Importing the Inline Embed, for example, would look like this:
-
-```jsx
-import React from "react";
-import { InlineWidget } from "react-calendly";
-```
-
-Then, include the InlineWidget component in your application to be rendered. The inline embed has one required prop, the url prop. The url prop is the link to your scheduling page:
-
-```jsx
-<InlineWidget url="https://calendly.com/your_scheduling_page" />
-```
-
-The final code would look something like this when you are done:
+#### InlineWidget
 
 ```jsx
 import React from "react";
@@ -54,6 +41,58 @@ const App = () => {
   return (
     <div className="App">
       <InlineWidget url="https://calendly.com/your_scheduling_page" />
+    </div>
+  );
+};
+
+export default App;
+```
+
+#### PopupWidget
+
+```jsx
+import React from "react";
+import { PopupWidget } from "react-calendly";
+
+const App = () => {
+  return (
+    <div className="App">
+      <PopupWidget
+        url="https://calendly.com/your_scheduling_page"
+        /*
+         * react-calendly uses React's Portal feature (https://reactjs.org/docs/portals.html) to render the popup modal. As a result, you'll need to
+         * specify the rootElement property to ensure that the modal into the correct domNode.
+         */
+        rootElement={document.getElementById("root")}
+        text="Click here to schedule!"
+        textColor="#ffffff"
+        color="#00a2ff"
+      />
+    </div>
+  );
+};
+
+export default App;
+```
+
+#### PopupButton
+
+```jsx
+import React from "react";
+import { PopupButton } from "react-calendly";
+
+const App = () => {
+  return (
+    <div className="App">
+      <PopupButton
+        url="https://calendly.com/your_scheduling_page"
+        /*
+         * react-calendly uses React's Portal feature (https://reactjs.org/docs/portals.html) to render the popup modal. As a result, you'll need to
+         * specify the rootElement property to ensure that the modal into the correct domNode.
+         */
+        rootElement={document.getElementById("root")}
+        text="Click here to schedule!"
+      />
     </div>
   );
 };
@@ -130,20 +169,6 @@ utm={{
 #### Why are my page settings not working?
 
 For the page settings to work, you'll need to pass in a `url` prop that is associated with a Calendly account on the [Pro plan](https://calendly.com/pages/pricing).
-
-#### How do I create a custom button that triggers a pop-up scheduler?
-
-`react-calendly` provides an `openPopupWidget` function that can be used to trigger the pop-up scheduler.
-
-```tsx
-import { openPopupWidget } from "react-calendly";
-
-const CustomButton = ({ url, prefill, pageSettings, utm }) => {
-  const onClick = () => openPopupWidget({ url, prefill, pageSettings, utm });
-
-  return <button onClick={onClick}>Custom Button</button>;
-};
-```
 
 #### How can I access the event details when an event is scheduled?
 

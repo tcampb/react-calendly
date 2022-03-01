@@ -8,7 +8,6 @@ import type {
   EventTypeViewedEvent,
   ProfilePageViewedEvent,
 } from "./components/CalendlyEventListener/CalendlyEventListener";
-import { openPopupWidget, closePopupWidget } from './calendly';
 
 export { InlineWidget };
 export { PopupButton };
@@ -20,4 +19,3 @@ export {
   EventTypeViewedEvent,
   ProfilePageViewedEvent,
 };
-export { openPopupWidget, closePopupWidget };

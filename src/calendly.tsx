@@ -1,24 +1,3 @@
-import { Props as BadgeWidgetOptions } from "./components/PopupWidget/PopupWidget";
-import initializeCalendly from "./calendly-widget";
-
-import { InlineWidgetOptions } from "./components/InlineWidget/InlineWidget";
-import { PopupWidgetOptions } from "./components/PopupButton/PopupButton";
-
-export interface ICalendly {
-  initInlineWidget(options: InlineWidgetOptions): void;
-  showPopupWidget(url: string): void;
-  closePopupWidget(): void;
-  destroyBadgeWidget(): void;
-  initBadgeWidget(options: BadgeWidgetOptions): void;
-  initPopupWidget(options: PopupWidgetOptions): void;
-}
-
-declare global {
-  interface Window {
-    Calendly: ICalendly;
-  }
-}
-
 type Optional<T extends object> = {
   [P in keyof T]?: T[P];
 };
@@ -102,15 +81,19 @@ export type PageSettings = Optional<{
   hideGdprBanner: boolean;
 }>;
 
-export const loadScript = () => {
-  if (!window.Calendly) {
-    initializeCalendly();
-  }
-};
-
-export const withPageSettings = (url: string, pageSettings?: PageSettings) => {
-  if (!pageSettings) return url;
-
+export const formatCalendlyUrl = ({
+  url,
+  prefill = {},
+  pageSettings = {},
+  utm = {},
+  embedType,
+}: {
+  url: string;
+  prefill?: Prefill;
+  pageSettings?: PageSettings;
+  utm?: Utm;
+  embedType?: "Inline" | "PopupWidget" | "PopupButton";
+}) => {
   const {
     backgroundColor,
     hideEventTypeDetails,
@@ -120,43 +103,79 @@ export const withPageSettings = (url: string, pageSettings?: PageSettings) => {
     hideGdprBanner,
   } = pageSettings;
 
+  const {
+    customAnswers,
+    date,
+    email,
+    firstName,
+    guests,
+    lastName,
+    location,
+    name,
+  } = prefill;
+
+  const { utmCampaign, utmContent, utmMedium, utmSource, utmTerm } = utm;
+
   const queryStringIndex = url.indexOf("?");
   const hasQueryString = queryStringIndex > -1;
   const queryString = url.slice(queryStringIndex + 1);
   const baseUrl = hasQueryString ? url.slice(0, queryStringIndex) : url;
 
   const updatedQueryString = [
-    queryString,
+    hasQueryString ? queryString : null,
     backgroundColor ? `background_color=${backgroundColor}` : null,
     hideEventTypeDetails ? `hide_event_type_details=1` : null,
     hideLandingPageDetails ? `hide_landing_page_details=1` : null,
     primaryColor ? `primary_color=${primaryColor}` : null,
     textColor ? `text_color=${textColor}` : null,
     hideGdprBanner ? `hide_gdpr_banner=1` : null,
+    name ? `name=${encodeURI(name)}` : null,
+    location ? `location=${encodeURI(location)}` : null,
+    firstName ? `first_name=${encodeURI(firstName)}` : null,
+    lastName ? `last_name=${encodeURI(lastName)}` : null,
+    guests ? `guests=${guests.join(",")}` : null,
+    email ? `email=${email}` : null,
+    date && date instanceof Date ? `date=${formatDate(date)}` : null,
+    utmCampaign ? `utm_campaign=${encodeURI(utmCampaign)}` : null,
+    utmContent ? `utm_content=${encodeURI(utmContent)}` : null,
+    utmMedium ? `utm_medium=${encodeURI(utmMedium)}` : null,
+    utmSource ? `utm_source=${encodeURI(utmSource)}` : null,
+    utmTerm ? `utm_term=${encodeURI(utmTerm)}` : null,
+    embedType ? `embed_type=${embedType}` : null,
+    /*
+     * https://github.com/tcampb/react-calendly/pull/31
+     * embed_domain must be defined to receive messages from the Calendly iframe.
+     */
+    `embed_domain=${document?.location?.host || 1}`,
   ]
+    .concat(customAnswers ? formatCustomAnswers(customAnswers) : [])
     .filter((item) => item !== null)
     .join("&");
 
   return `${baseUrl}?${updatedQueryString}`;
 };
 
-export const openPopupWidget = (
-  options: PopupWidgetOptions & { pageSettings?: PageSettings }
-) => {
-  loadScript();
+const formatDate = (d: Date) => {
+  const month = d.getMonth() + 1;
+  const day = d.getDate();
+  const year = d.getFullYear();
 
-  const widgetOptions: PopupWidgetOptions = {
-    url: withPageSettings(options.url, options.pageSettings),
-    prefill: options.prefill,
-    utm: options.utm,
-    iframeTitle: options.iframeTitle
-  };
-
-  window.Calendly.initPopupWidget(widgetOptions);
+  return [
+    year,
+    month < 10 ? `0${month}` : month,
+    day < 10 ? `0${day}` : day,
+  ].join("-");
 };
 
-export const closePopupWidget = () => {
-  loadScript();
+const CUSTOM_ANSWER_PATTERN = /^a\d{1,2}$/;
+const formatCustomAnswers = (customAnswers: object) => {
+  const customAnswersFiltered = Object.keys(customAnswers).filter((key) =>
+    key.match(CUSTOM_ANSWER_PATTERN)
+  );
 
-  window.Calendly.closePopupWidget();
+  if (!customAnswersFiltered.length) return null;
+
+  return customAnswersFiltered.map(
+    (key) => `${key}=${encodeURI(customAnswers[key])}`
+  );
 };

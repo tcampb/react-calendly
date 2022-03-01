@@ -16,14 +16,10 @@ export interface Props {
   styles?: React.CSSProperties | undefined;
   pageSettings?: PageSettings;
   iframeTitle?: IframeTitle;
+  embedType?: "Inline" | "PopupWidget" | "PopupButton";
 }
 
-const defaultStyles = {
-  minWidth: "320px",
-  height: "630px",
-};
-
-class InlineWidget extends React.Component<Props, { isLoading: boolean }> {
+class ModalContent extends React.Component<Props, { isLoading: boolean }> {
   constructor(props: Props) {
     super(props);
 
@@ -46,14 +42,11 @@ class InlineWidget extends React.Component<Props, { isLoading: boolean }> {
       pageSettings: this.props.pageSettings,
       prefill: this.props.prefill,
       utm: this.props.utm,
-      embedType: "Inline",
+      embedType: this.props.embedType,
     });
 
     return (
-      <div
-        className="calendly-inline-widget"
-        style={this.props.styles || defaultStyles}
-      >
+      <>
         {this.state.isLoading && <LoadingSpinner />}
         <iframe
           width="100%"
@@ -63,9 +56,9 @@ class InlineWidget extends React.Component<Props, { isLoading: boolean }> {
           onLoad={this.onLoad}
           src={src}
         ></iframe>
-      </div>
+      </>
     );
   }
 }
 
-export default InlineWidget;
+export default ModalContent;
