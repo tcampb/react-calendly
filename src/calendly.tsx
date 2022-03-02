@@ -146,7 +146,7 @@ export const formatCalendlyUrl = ({
      * https://github.com/tcampb/react-calendly/pull/31
      * embed_domain must be defined to receive messages from the Calendly iframe.
      */
-    `embed_domain=${document?.location?.host || 1}`,
+    `embed_domain=1`,
   ]
     .concat(customAnswers ? formatCustomAnswers(customAnswers) : [])
     .filter((item) => item !== null)
