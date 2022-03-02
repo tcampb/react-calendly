@@ -13,7 +13,6 @@ export interface Props {
   url: string;
   prefill?: Prefill;
   utm?: Utm;
-  styles?: React.CSSProperties | undefined;
   pageSettings?: PageSettings;
   iframeTitle?: IframeTitle;
 }
