@@ -173,7 +173,7 @@ const formatCustomAnswers = (customAnswers: object) => {
     key.match(CUSTOM_ANSWER_PATTERN)
   );
 
-  if (!customAnswersFiltered.length) return null;
+  if (!customAnswersFiltered.length) return [];
 
   return customAnswersFiltered.map(
     (key) => `${key}=${encodeURI(customAnswers[key])}`
