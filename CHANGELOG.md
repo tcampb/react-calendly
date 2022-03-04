@@ -1,5 +1,11 @@
 # Changelog
 
+## 3.0.0
+
+- Removes Calendly widget script dependency (https://assets.calendly.com/assets/external/widget.js).
+- Removes `openPopupWidget` and `closePopupWidget` functions (replaced by `PopupModal` component).
+- Adds `PopupModal` component.
+
 ## 2.2.3
 
 - [#96] Added title attribute to the Calendly scheduling page iframe.

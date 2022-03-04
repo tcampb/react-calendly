@@ -1,17 +1,12 @@
 import * as React from "react";
-import '../../calendly-widget.css';
-import {
-  loadScript,
-  PageSettings,
-  withPageSettings,
-  Prefill,
-  Utm,
-  IframeTitle
-} from "../../calendly";
+import "../../calendly-widget.css";
+import { PageSettings, Prefill, Utm, IframeTitle } from "../../calendly";
+import Modal from "../PopupModal/Modal";
 
 export interface Props {
   url: string;
   text: string;
+  rootElement: HTMLElement;
   color?: string;
   textColor?: string;
   branding?: boolean;
@@ -21,43 +16,53 @@ export interface Props {
   iframeTitle?: IframeTitle;
 }
 
-const defaultProps: Partial<Props> = {
-  branding: false,
-  color: "#00a2ff",
-  textColor: "#ffffff",
-  text: "Schedule time with me",
-};
+class PopupWidget extends React.Component<Props, { isOpen: boolean }> {
+  constructor(props: Props) {
+    super(props);
 
-class PopupWidget extends React.Component<Props> {
-  componentDidUpdate() {
-    const options = {
-      ...defaultProps,
-      ...this.props,
-      url: withPageSettings(this.props.url, this.props.pageSettings),
+    this.state = {
+      isOpen: false,
     };
 
-    window.Calendly.initBadgeWidget(options);
+    this.onClick = this.onClick.bind(this);
+    this.onClose = this.onClose.bind(this);
   }
 
-  componentDidMount() {
-    loadScript();
-
-    const options = {
-      ...defaultProps,
-      ...this.props,
-      url: withPageSettings(this.props.url, this.props.pageSettings),
-    };
-
-    window.Calendly.initBadgeWidget(options);
+  onClick() {
+    this.setState({
+      isOpen: true,
+    });
   }
 
-  componentWillUnmount() {
-    window.Calendly.destroyBadgeWidget();
-    window.Calendly.closePopupWidget();
+  onClose(e: React.SyntheticEvent) {
+    e.stopPropagation();
+
+    this.setState({
+      isOpen: false,
+    });
   }
 
   render() {
-    return <></>;
+    return (
+      <div className="calendly-badge-widget" onClick={this.onClick}>
+        <div
+          className="calendly-badge-content"
+          style={{
+            background: this.props.color || "#00a2ff",
+            color: this.props.textColor || "#ffffff",
+          }}
+        >
+          {this.props.text || "Schedule time with me"}
+          {this.props.branding && <span>powered by Calendly</span>}
+        </div>
+        <Modal
+          {...this.props}
+          open={this.state.isOpen}
+          onModalClose={this.onClose}
+          rootElement={this.props.rootElement}
+        />
+      </div>
+    );
   }
 }
 

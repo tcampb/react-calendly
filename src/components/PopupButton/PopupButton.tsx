@@ -1,67 +1,64 @@
 import * as React from "react";
-import '../../calendly-widget.css'
-import {
-  loadScript,
-  PageSettings,
-  withPageSettings,
-  Prefill,
-  Utm,
-  IframeTitle
-} from "../../calendly";
+import "../../calendly-widget.css";
+import { PageSettings, Prefill, Utm, IframeTitle } from "../../calendly";
+import Modal from "../PopupModal/Modal";
 
 export interface Props {
   url: string;
   text: string;
+  rootElement: HTMLElement;
   prefill?: Prefill;
   utm?: Utm;
   pageSettings?: PageSettings;
   styles?: React.CSSProperties | undefined;
   className?: string;
-  iframeTitle?: IframeTitle
+  iframeTitle?: IframeTitle;
 }
 
-export interface PopupWidgetOptions {
-  url: string;
-  prefill?: Prefill;
-  utm?: Utm;
-  iframeTitle?: IframeTitle
-}
+class PopupButton extends React.Component<Props, { isOpen: boolean }> {
+  constructor(props: Props) {
+    super(props);
 
-const initWidget = (options: PopupWidgetOptions) => {
-  window.Calendly.initPopupWidget(options);
-};
+    this.state = {
+      isOpen: false,
+    };
 
-const createClickHandler = (widgetOptions: PopupWidgetOptions) => (
-  e: React.MouseEvent<HTMLButtonElement, MouseEvent>
-) => {
-  e.preventDefault();
-  return initWidget(widgetOptions);
-};
-
-class PopupButton extends React.Component<Props> {
-  componentWillUnmount() {
-    window.Calendly.closePopupWidget();
+    this.onClick = this.onClick.bind(this);
+    this.onClose = this.onClose.bind(this);
   }
 
-  componentDidMount() {
-    loadScript();
+  onClick(e: React.SyntheticEvent) {
+    e.preventDefault();
+    this.setState({
+      isOpen: true,
+    });
+  }
+
+  onClose(e: React.SyntheticEvent) {
+    e.stopPropagation();
+
+    this.setState({
+      isOpen: false,
+    });
   }
 
   render() {
-    const widgetOptions: PopupWidgetOptions = {
-      url: withPageSettings(this.props.url, this.props.pageSettings),
-      prefill: this.props.prefill,
-      utm: this.props.utm,
-      iframeTitle: this.props.iframeTitle
-    };
     return (
-      <button
-        onClick={createClickHandler(widgetOptions)}
-        style={this.props.styles || {}}
-        className={this.props.className || ""}
-      >
-        {this.props.text}
-      </button>
+      <>
+        <button
+          onClick={this.onClick}
+          style={this.props.styles || {}}
+          className={this.props.className || ""}
+        >
+          {this.props.text}
+        </button>
+        <Modal
+          {...this.props}
+          open={this.state.isOpen}
+          onModalClose={this.onClose}
+          rootElement={this.props.rootElement}
+        />
+      </>
     );
   }
 }
