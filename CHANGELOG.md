@@ -1,5 +1,9 @@
 # Changelog
 
+## 3.0.1
+
+- Fixes uri encoding bug (https://github.com/tcampb/react-calendly/pull/102).
+
 ## 3.0.0
 
 - Removes Calendly widget script dependency (https://assets.calendly.com/assets/external/widget.js).
