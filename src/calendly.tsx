@@ -176,6 +176,6 @@ const formatCustomAnswers = (customAnswers: object) => {
   if (!customAnswersFiltered.length) return [];
 
   return customAnswersFiltered.map(
-    (key) => `${key}=${encodeURI(customAnswers[key])}`
+    (key) => `${key}=${encodeURIComponent(customAnswers[key])}`
   );
 };
