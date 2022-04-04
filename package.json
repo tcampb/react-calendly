@@ -1,6 +1,6 @@
 {
   "name": "react-calendly",
-  "version": "3.0.1",
+  "version": "3.0.2",
   "description": "Calendly integration for React apps",
   "author": "tcampb",
   "license": "MIT",
@@ -30,8 +30,8 @@
     "build-storybook": "build-storybook"
   },
   "peerDependencies": {
-    "react": "^15.0.0 || ^16.0.0 || ^17.0.0",
-    "react-dom": "^15.0.0 || ^16.0.0 || ^17.0.0"
+    "react": "^15.0.0 || ^16.0.0 || ^17.0.0 || ^18.0.0",
+    "react-dom": "^15.0.0 || ^16.0.0 || ^17.0.0 || ^18.0.0"
   },
   "devDependencies": {
     "@rollup/plugin-typescript": "^2.1.0",

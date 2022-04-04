@@ -1,5 +1,9 @@
 # Changelog
 
+## 3.0.2
+
+- Adds React v18 support (https://github.com/tcampb/react-calendly/issues/106).
+
 ## 3.0.1
 
 - Fixes uri encoding bug (https://github.com/tcampb/react-calendly/pull/102).
