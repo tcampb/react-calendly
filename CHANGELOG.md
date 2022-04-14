@@ -1,5 +1,10 @@
 # Changelog
 
+## 3.0.3
+
+- Supports new React 18 types (https://github.com/tcampb/react-calendly/pull/111).
+- Allows closing modal with an overlay click (https://github.com/tcampb/react-calendly/pull/110).
+
 ## 3.0.2
 
 - Adds React v18 support (https://github.com/tcampb/react-calendly/issues/106).
