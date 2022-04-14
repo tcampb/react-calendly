@@ -43,6 +43,7 @@ type Props = {
   onEventScheduled?: (e: EventScheduledEvent) => any;
   onEventTypeViewed?: (e: EventTypeViewedEvent) => any;
   onProfilePageViewed?: (e: ProfilePageViewedEvent) => any;
+  children?: React.ReactNode;
 };
 
 class CalendlyEventListener extends React.Component<Props> {
