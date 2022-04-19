@@ -38,46 +38,44 @@ export type ProfilePageViewedEvent = MessageEvent<{
   payload: {};
 }>;
 
-type Props = {
+export type CalendlyEventHandlers = {
   onDateAndTimeSelected?: (e: DateAndTimeSelectedEvent) => any;
   onEventScheduled?: (e: EventScheduledEvent) => any;
   onEventTypeViewed?: (e: EventTypeViewedEvent) => any;
   onProfilePageViewed?: (e: ProfilePageViewedEvent) => any;
-  children?: React.ReactNode;
 };
 
-class CalendlyEventListener extends React.Component<Props> {
-  constructor(props: Props) {
-    super(props);
+const EVENT_NAME = "message";
 
-    this.handleEvent = this.handleEvent.bind(this);
-  }
+export default function useCalendlyEventListener(
+  eventHandlers: CalendlyEventHandlers
+) {
+  const {
+    onDateAndTimeSelected,
+    onEventScheduled,
+    onEventTypeViewed,
+    onProfilePageViewed,
+  } = eventHandlers || {};
 
-  componentDidMount() {
-    window.addEventListener("message", this.handleEvent);
-  }
+  React.useEffect(() => {
+    const onMessage = (e: MessageEvent) => {
+      const eventName = e.data.event;
 
-  componentWillUnmount() {
-    window.removeEventListener("message", this.handleEvent);
-  }
+      if (eventName === CalendlyEvent.DATE_AND_TIME_SELECTED) {
+        onDateAndTimeSelected && onDateAndTimeSelected(e);
+      } else if (eventName === CalendlyEvent.EVENT_SCHEDULED) {
+        onEventScheduled && onEventScheduled(e);
+      } else if (eventName === CalendlyEvent.EVENT_TYPE_VIEWED) {
+        onEventTypeViewed && onEventTypeViewed(e);
+      } else if (eventName === CalendlyEvent.PROFILE_PAGE_VIEWED) {
+        onProfilePageViewed && onProfilePageViewed(e);
+      }
+    };
 
-  private handleEvent(e: MessageEvent) {
-    const eventName = e.data.event;
+    window.addEventListener(EVENT_NAME, onMessage);
 
-    if (eventName === CalendlyEvent.DATE_AND_TIME_SELECTED) {
-      this.props.onDateAndTimeSelected && this.props.onDateAndTimeSelected(e);
-    } else if (eventName === CalendlyEvent.EVENT_SCHEDULED) {
-      this.props.onEventScheduled && this.props.onEventScheduled(e);
-    } else if (eventName === CalendlyEvent.EVENT_TYPE_VIEWED) {
-      this.props.onEventTypeViewed && this.props.onEventTypeViewed(e);
-    } else if (eventName === CalendlyEvent.PROFILE_PAGE_VIEWED) {
-      this.props.onProfilePageViewed && this.props.onProfilePageViewed(e);
-    }
-  }
-
-  render() {
-    return this.props.children || null;
-  }
+    return function cleanup() {
+      window.removeEventListener(EVENT_NAME, onMessage);
+    };
+  }, [eventHandlers]);
 }
-
-export default CalendlyEventListener;

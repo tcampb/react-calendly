@@ -1,5 +1,9 @@
 # Changelog
 
+## 4.0.0
+
+- Replaced `CalendlyEventListener` component with `useCalendlyEventListener` hook (https://github.com/tcampb/react-calendly/issues/45).
+
 ## 3.0.3
 
 - Supports new React 18 types (https://github.com/tcampb/react-calendly/pull/111).

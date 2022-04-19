@@ -14,7 +14,7 @@ import InlineWidget from "../InlineWidget/InlineWidget";
 import PopupButton from "../PopupButton/PopupButton";
 import PopupWidget from "../PopupWidget/PopupWidget";
 import PopupModal from "../PopupModal/Modal";
-import CalendlyEventListener from "../CalendlyEventListener/CalendlyEventListener";
+import useCalendlyEventListener from "../hooks/useCalendlyEventListener";
 import { PageSettings, Utm, Prefill } from "../../calendly";
 
 const prefill: Prefill = {
@@ -134,7 +134,7 @@ storiesOf("Components", module)
 
     return <CustomButtonExample />;
   })
-  .add("CalendlyEventListener", () => {
+  .add("useCalendlyEventListener", () => {
     const eventId = "calendly-event";
     const instructions =
       "The embedded scheduling page notifies the parent window of important events during the booking flow. " +
@@ -145,9 +145,16 @@ storiesOf("Components", module)
       document.getElementById(eventId)!.innerText = JSON.stringify(e.data);
     };
 
+    useCalendlyEventListener({
+      onDateAndTimeSelected: calendlyEventHandler,
+      onEventScheduled: calendlyEventHandler,
+      onEventTypeViewed: calendlyEventHandler,
+      onProfilePageViewed: calendlyEventHandler,
+    });
+
     return (
       <>
-        <div style={{ textAlign: "center", width: "50%", margin: "0 auto" }}>
+        <div style={{ textAlign: "center", width: "60%", margin: "0 auto" }}>
           <h4>
             {instructions}
             <a
@@ -166,26 +173,19 @@ storiesOf("Components", module)
             Calendly Event: <span id={eventId}></span>
           </div>
         </div>
-        <CalendlyEventListener
-          onDateAndTimeSelected={calendlyEventHandler}
-          onEventScheduled={calendlyEventHandler}
-          onEventTypeViewed={calendlyEventHandler}
-          onProfilePageViewed={calendlyEventHandler}
+        <div
+          style={{
+            minWidth: "320px",
+            height: "630px",
+          }}
         >
-          <div
-            style={{
-              minWidth: "320px",
-              height: "630px",
-            }}
-          >
-            <iframe
-              frameBorder="0"
-              height="100%"
-              width="100%"
-              src={`https://calendly.com/acmesales?embed_domain=${document.location.host}&embed_type=Inline`}
-            />
-          </div>
-        </CalendlyEventListener>
+          <iframe
+            frameBorder="0"
+            height="100%"
+            width="100%"
+            src={`https://calendly.com/acmesales?embed_domain=${document.location.host}&embed_type=Inline`}
+          />
+        </div>
       </>
     );
   });
