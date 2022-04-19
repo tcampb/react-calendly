@@ -30,7 +30,7 @@ Ensure that React has been included into your page or component. Then, you can i
 - [PopupWidget](https://tcampb.github.io/react-calendly/?path=/story/components--popupwidget)
 - [PopupButton](https://tcampb.github.io/react-calendly/?path=/story/components--popupbutton)
 - [Custom Button](https://tcampb.github.io/react-calendly/?path=/story/components--custom-button)
-- [CalendlyEventListener](https://tcampb.github.io/react-calendly/?path=/story/components--calendlyeventlistener)
+- [useCalendlyEventListener](https://tcampb.github.io/react-calendly/?path=/story/components--usecalendlyeventlistener)
 
 #### InlineWidget
 
@@ -215,7 +215,7 @@ class CustomButtonExample extends React.Component {
 
 #### How can I access the event details when an event is scheduled?
 
-The [CalendlyEventListener](https://tcampb.github.io/react-calendly/?path=/story/components--calendlyeventlistener) `onEventScheduled` prop receives an event with the following data structure:
+The [useCalendlyEventListener](https://tcampb.github.io/react-calendly/?path=/story/components--usecalendlyeventlistener) `onEventScheduled` prop receives an event with the following data structure:
 
 ```javascript
 {
