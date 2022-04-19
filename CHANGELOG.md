@@ -3,6 +3,7 @@
 ## 4.0.0
 
 - Replaced `CalendlyEventListener` component with `useCalendlyEventListener` hook (https://github.com/tcampb/react-calendly/issues/45).
+- Updated `react` & `react-dom` peer dependency versions; `react-calendly@4.0.0` now requires react and react-dom version >=16.8.
 
 ## 3.0.3
 
