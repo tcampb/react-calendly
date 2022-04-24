@@ -47,6 +47,33 @@ export type CalendlyEventHandlers = {
 
 const EVENT_NAME = "message";
 
+export const useCalendlyEventListenerScoped = (
+  {
+    onDateAndTimeSelected,
+    onEventScheduled,
+    onEventTypeViewed,
+    onProfilePageViewed,
+  }: CalendlyEventHandlers,
+  iframeRef: React.RefObject<HTMLIFrameElement>
+) => {
+  const withScope = (fn?: (e: MessageEvent) => any) => {
+    if (!fn) return fn;
+
+    return (e: MessageEvent) => {
+      if (e.source === iframeRef.current?.contentWindow) {
+        fn(e);
+      }
+    };
+  };
+
+  useCalendlyEventListener({
+    onDateAndTimeSelected: withScope(onDateAndTimeSelected),
+    onEventScheduled: withScope(onEventScheduled),
+    onEventTypeViewed: withScope(onEventTypeViewed),
+    onProfilePageViewed: withScope(onProfilePageViewed),
+  });
+};
+
 export default function useCalendlyEventListener(
   eventHandlers: CalendlyEventHandlers
 ) {
@@ -56,6 +83,11 @@ export default function useCalendlyEventListener(
     onEventTypeViewed,
     onProfilePageViewed,
   } = eventHandlers || {};
+  const hasEventHandler =
+    onDateAndTimeSelected ||
+    onEventScheduled ||
+    onEventTypeViewed ||
+    onProfilePageViewed;
 
   React.useEffect(() => {
     const onMessage = (e: MessageEvent) => {
@@ -72,10 +104,10 @@ export default function useCalendlyEventListener(
       }
     };
 
-    window.addEventListener(EVENT_NAME, onMessage);
+    if (hasEventHandler) window.addEventListener(EVENT_NAME, onMessage);
 
     return function cleanup() {
-      window.removeEventListener(EVENT_NAME, onMessage);
+      if (hasEventHandler) window.removeEventListener(EVENT_NAME, onMessage);
     };
   }, [eventHandlers]);
 }

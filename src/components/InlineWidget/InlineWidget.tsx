@@ -8,8 +8,12 @@ import {
   formatCalendlyUrl,
 } from "../../calendly";
 import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
+import {
+  CalendlyEventHandlers,
+  useCalendlyEventListenerScoped,
+} from "../hooks/useCalendlyEventListener";
 
-export interface Props {
+export interface Props extends CalendlyEventHandlers {
   url: string;
   prefill?: Prefill;
   utm?: Utm;
@@ -23,49 +27,50 @@ const defaultStyles = {
   height: "630px",
 };
 
-class InlineWidget extends React.Component<Props, { isLoading: boolean }> {
-  constructor(props: Props) {
-    super(props);
+const InlineWidget = (props: Props) => {
+  const iframeRef = React.useRef<HTMLIFrameElement>(null);
+  const [isLoading, setIsLoading] = React.useState(true);
+  const {
+    onDateAndTimeSelected,
+    onEventScheduled,
+    onEventTypeViewed,
+    onProfilePageViewed,
+  } = props;
+  useCalendlyEventListenerScoped(
+    {
+      onDateAndTimeSelected,
+      onEventScheduled,
+      onEventTypeViewed,
+      onProfilePageViewed,
+    },
+    iframeRef
+  );
+  const onLoad = () => setIsLoading(false);
+  const src = formatCalendlyUrl({
+    url: props.url,
+    pageSettings: props.pageSettings,
+    prefill: props.prefill,
+    utm: props.utm,
+    embedType: "Inline",
+  });
 
-    this.state = {
-      isLoading: true,
-    };
-
-    this.onLoad = this.onLoad.bind(this);
-  }
-
-  private onLoad() {
-    this.setState({
-      isLoading: false,
-    });
-  }
-
-  render() {
-    const src = formatCalendlyUrl({
-      url: this.props.url,
-      pageSettings: this.props.pageSettings,
-      prefill: this.props.prefill,
-      utm: this.props.utm,
-      embedType: "Inline",
-    });
-
-    return (
-      <div
-        className="calendly-inline-widget"
-        style={this.props.styles || defaultStyles}
-      >
-        {this.state.isLoading && <LoadingSpinner />}
-        <iframe
-          width="100%"
-          height="100%"
-          frameBorder="0"
-          title={this.props.iframeTitle || "Calendly Scheduling Page"}
-          onLoad={this.onLoad}
-          src={src}
-        ></iframe>
-      </div>
-    );
-  }
-}
+  return (
+    <div
+      className="calendly-inline-widget"
+      style={props.styles || defaultStyles}
+    >
+      {isLoading && <LoadingSpinner />}
+      <iframe
+        ref={iframeRef}
+        width="100%"
+        height="100%"
+        frameBorder="0"
+        title={props.iframeTitle || "Calendly Scheduling Page"}
+        onLoad={onLoad}
+        src={src}
+      ></iframe>
+    </div>
+  );
+};
 
 export default InlineWidget;

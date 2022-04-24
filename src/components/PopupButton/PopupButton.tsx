@@ -2,8 +2,9 @@ import * as React from "react";
 import "../../calendly-widget.css";
 import { PageSettings, Prefill, Utm, IframeTitle } from "../../calendly";
 import Modal from "../PopupModal/Modal";
+import { CalendlyEventHandlers } from "../hooks/useCalendlyEventListener";
 
-export interface Props {
+export interface Props extends CalendlyEventHandlers {
   url: string;
   text: string;
   rootElement: HTMLElement;
