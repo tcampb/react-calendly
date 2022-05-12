@@ -1,5 +1,9 @@
 # Changelog
 
+## 4.0.1
+
+- Fixed issue that caused the `email` and `guests` prefill options to not be properly encoded (https://github.com/tcampb/react-calendly/issues/116).
+
 ## 4.0.0
 
 - Replaced `CalendlyEventListener` component with `useCalendlyEventListener` hook (https://github.com/tcampb/react-calendly/issues/45).
