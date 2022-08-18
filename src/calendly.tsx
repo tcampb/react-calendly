@@ -38,7 +38,6 @@ export type Utm = Optional<{
   utmContent: string;
   utmTerm: string;
   salesforce_uuid: string;
-  leadId: string;
 }>;
 
 /**
@@ -116,7 +115,7 @@ export const formatCalendlyUrl = ({
     name,
   } = prefill;
 
-  const { utmCampaign, utmContent, utmMedium, utmSource, utmTerm, salesforce_uuid, leadId } = utm;
+  const { utmCampaign, utmContent, utmMedium, utmSource, utmTerm, salesforce_uuid } = utm;
 
   const queryStringIndex = url.indexOf("?");
   const hasQueryString = queryStringIndex > -1;
@@ -144,7 +143,6 @@ export const formatCalendlyUrl = ({
     utmSource ? `utm_source=${encodeURIComponent(utmSource)}` : null,
     utmTerm ? `utm_term=${encodeURIComponent(utmTerm)}` : null,
     salesforce_uuid ? `salesforce_uuid=${encodeURIComponent(salesforce_uuid)}` : null,
-    leadId ? `lead_id=${encodeURIComponent(leadId)}` : null,
     embedType ? `embed_type=${embedType}` : null,
     /*
      * https://github.com/tcampb/react-calendly/pull/31
