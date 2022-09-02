@@ -1,5 +1,9 @@
 # Changelog
 
+## 4.1.0
+
+- Added `salesforce_uuid` prefill option (https://github.com/tcampb/react-calendly/pull/128).
+
 ## 4.0.1
 
 - Fixed issue that caused the `email` and `guests` prefill options to not be properly encoded (https://github.com/tcampb/react-calendly/issues/116).

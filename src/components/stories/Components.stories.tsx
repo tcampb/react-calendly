@@ -44,6 +44,7 @@ const utm: Utm = {
   utmMedium: "Ad",
   utmContent: "Shoe and Shirts",
   utmTerm: "Spring",
+  salesforce_uuid: '0038b00002ePOyABCD'
 };
 
 const pageSettings: PageSettings = {
