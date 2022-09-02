@@ -6,8 +6,8 @@ node_modules
 
 # builds
 build
-dist
 .rpt2_cache
+dist
 
 # misc
 .DS_Store
@@ -23,3 +23,4 @@ yarn-error.log*
 typings
 example
 
+.idea
