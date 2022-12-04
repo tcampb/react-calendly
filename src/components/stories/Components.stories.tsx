@@ -44,7 +44,7 @@ const utm: Utm = {
   utmMedium: "Ad",
   utmContent: "Shoe and Shirts",
   utmTerm: "Spring",
-  salesforce_uuid: '0038b00002ePOyABCD'
+  salesforce_uuid: "0038b00002ePOyABCD",
 };
 
 const pageSettings: PageSettings = {
@@ -53,6 +53,15 @@ const pageSettings: PageSettings = {
   hideLandingPageDetails: false,
   primaryColor: "00a2ff",
   textColor: "4d5055",
+  hideGdprBanner: true,
+};
+
+const pageSettingsWithHexCodes: PageSettings = {
+  backgroundColor: "#333",
+  hideEventTypeDetails: false,
+  hideLandingPageDetails: false,
+  primaryColor: "#FF0000",
+  textColor: "#FF0000",
   hideGdprBanner: true,
 };
 
@@ -71,6 +80,18 @@ storiesOf("Components", module)
       iframeTitle={text("iframeTitle", "Calendly Scheduling Page")}
     />
   ))
+  .add("InlineWidgetWithHexCodes", () => (
+    <InlineWidget
+      url={text("url", "https://calendly.com/acmesales")}
+      styles={object("styles", {
+        height: "1000px",
+      })}
+      prefill={object("prefill", prefill)}
+      utm={object("utm", utm)}
+      pageSettings={object("pageSettings", pageSettingsWithHexCodes)}
+      iframeTitle={text("iframeTitle", "Calendly Scheduling Page")}
+    />
+  ))
   .add("PopupButton", () => (
     <PopupButton
       url={text("url", "https://calendly.com/acmesales")}
@@ -78,6 +99,19 @@ storiesOf("Components", module)
       prefill={object("prefill", prefill)}
       utm={object("utm", utm)}
       pageSettings={object("pageSettings", pageSettings)}
+      styles={object("styles", {})}
+      className={text("className", "")}
+      iframeTitle={text("iframeTitle", "Calendly Scheduling Page")}
+      rootElement={document.getElementById("root")!}
+    />
+  ))
+  .add("PopupWithHexCodes", () => (
+    <PopupButton
+      url={text("url", "https://calendly.com/acmesales")}
+      text={text("text", "Click here to schedule!")}
+      prefill={object("prefill", prefill)}
+      utm={object("utm", utm)}
+      pageSettings={object("pageSettings", pageSettingsWithHexCodes)}
       styles={object("styles", {})}
       className={text("className", "")}
       iframeTitle={text("iframeTitle", "Calendly Scheduling Page")}
