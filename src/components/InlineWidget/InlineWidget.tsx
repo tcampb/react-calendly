@@ -8,6 +8,7 @@ import {
   formatCalendlyUrl,
 } from "../../calendly";
 import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
+import { sanitizePageSettingsProps } from "../../helpers/propHelpers";
 
 export interface Props {
   url: string;
@@ -43,7 +44,7 @@ class InlineWidget extends React.Component<Props, { isLoading: boolean }> {
   render() {
     const src = formatCalendlyUrl({
       url: this.props.url,
-      pageSettings: this.props.pageSettings,
+      pageSettings: sanitizePageSettingsProps(this.props.pageSettings),
       prefill: this.props.prefill,
       utm: this.props.utm,
       embedType: "Inline",
