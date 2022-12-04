@@ -1,12 +1,7 @@
 import { PageSettings } from "../calendly";
 
-function getFirstCharacter(str: string): string {
-  const strArray: string[] = str.split("");
-  return strArray[0];
-}
-
 function sanitizeColorString(str: string): string {
-  if (getFirstCharacter(str) === "#") {
+  if (str.charAt(0) === "#") {
     str = str.slice(1);
   }
   return str;
