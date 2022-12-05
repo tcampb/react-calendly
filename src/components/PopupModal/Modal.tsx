@@ -13,7 +13,10 @@ export default (props: Props) => {
 
   return ReactDom.createPortal(
     <div className="calendly-overlay">
-      <div onClick={props.onModalClose} className="calendly-close-overlay"></div>
+      <div
+        onClick={props.onModalClose}
+        className="calendly-close-overlay"
+      ></div>
       <div className="calendly-popup">
         <div className="calendly-popup-content">
           <ModalContent {...props} />

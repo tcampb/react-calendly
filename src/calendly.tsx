@@ -1,3 +1,5 @@
+import { sanitizePageSettingsProps } from "./helpers/propHelpers";
+
 type Optional<T extends object> = {
   [P in keyof T]?: T[P];
 };
@@ -95,6 +97,8 @@ export const formatCalendlyUrl = ({
   utm?: Utm;
   embedType?: "Inline" | "PopupWidget" | "PopupButton";
 }) => {
+  const sanitizedPageSettings = sanitizePageSettingsProps(pageSettings);
+
   const {
     backgroundColor,
     hideEventTypeDetails,
@@ -102,7 +106,7 @@ export const formatCalendlyUrl = ({
     primaryColor,
     textColor,
     hideGdprBanner,
-  } = pageSettings;
+  } = sanitizedPageSettings ?? pageSettings;
 
   const {
     customAnswers,
@@ -115,7 +119,14 @@ export const formatCalendlyUrl = ({
     name,
   } = prefill;
 
-  const { utmCampaign, utmContent, utmMedium, utmSource, utmTerm, salesforce_uuid } = utm;
+  const {
+    utmCampaign,
+    utmContent,
+    utmMedium,
+    utmSource,
+    utmTerm,
+    salesforce_uuid,
+  } = utm;
 
   const queryStringIndex = url.indexOf("?");
   const hasQueryString = queryStringIndex > -1;
@@ -142,7 +153,9 @@ export const formatCalendlyUrl = ({
     utmMedium ? `utm_medium=${encodeURIComponent(utmMedium)}` : null,
     utmSource ? `utm_source=${encodeURIComponent(utmSource)}` : null,
     utmTerm ? `utm_term=${encodeURIComponent(utmTerm)}` : null,
-    salesforce_uuid ? `salesforce_uuid=${encodeURIComponent(salesforce_uuid)}` : null,
+    salesforce_uuid
+      ? `salesforce_uuid=${encodeURIComponent(salesforce_uuid)}`
+      : null,
     embedType ? `embed_type=${embedType}` : null,
     /*
      * https://github.com/tcampb/react-calendly/pull/31
