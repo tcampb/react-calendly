@@ -74,5 +74,8 @@
   "files": [
     "dist",
     "typings"
-  ]
+  ],
+  "stackblitz": {
+    "startCommand": "npm run storybook"
+  }
 }
