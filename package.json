@@ -76,6 +76,6 @@
     "typings"
   ],
   "stackblitz": {
-    "startCommand": "npm run storybook"
+    "startCommand": "npm run build-storybook && npm run storybook"
   }
 }
