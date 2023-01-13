@@ -106,7 +106,7 @@ export const formatCalendlyUrl = ({
     primaryColor,
     textColor,
     hideGdprBanner,
-  } = sanitizedPageSettings ?? pageSettings;
+  } = sanitizedPageSettings
 
   const {
     customAnswers,

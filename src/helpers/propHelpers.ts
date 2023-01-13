@@ -2,14 +2,14 @@ import { PageSettings } from "../calendly";
 
 function sanitizeColorString(str: string): string {
   if (str.charAt(0) === "#") {
-    str = str.slice(1);
+    return str.slice(1);
   }
   return str;
 }
 
 export function sanitizePageSettingsProps(
-  props?: PageSettings
-): PageSettings | undefined {
+  props: PageSettings
+) {
   if (props?.primaryColor) {
     props.primaryColor = sanitizeColorString(props.primaryColor);
   }

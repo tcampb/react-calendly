@@ -11,6 +11,10 @@ interface Props extends ModalContentProps {
 export default (props: Props) => {
   if (!props.open) return null;
 
+  if (!props.rootElement) {
+    throw new Error('[react-calendly]: PopupModal rootElement property cannot be undefined')
+  }
+
   return ReactDom.createPortal(
     <div className="calendly-overlay">
       <div
