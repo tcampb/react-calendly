@@ -22,15 +22,18 @@ yarn add react-calendly
 
 ## Documentation
 
+- [Basic Usage](#basic-usage)
+- [Advanced Usage](#advanced-usage)
+- [Frequently Asked Questions](#faq)
+
 ### Basic Usage
 
 Ensure that React has been included into your page or component. Then, you can import any of the following components from the "react-calendly" package:
 
-- [InlineWidget](https://tcampb.github.io/react-calendly/?path=/story/components--inlinewidget)
-- [PopupWidget](https://tcampb.github.io/react-calendly/?path=/story/components--popupwidget)
-- [PopupButton](https://tcampb.github.io/react-calendly/?path=/story/components--popupbutton)
-- [Custom Button](https://tcampb.github.io/react-calendly/?path=/story/components--custom-button)
-- [useCalendlyEventListener](https://tcampb.github.io/react-calendly/?path=/story/components--usecalendlyeventlistener)
+- [InlineWidget](#inlinewidget)
+- [PopupWidget](#popupwidget)
+- [PopupButton](#popupbutton)
+- [useCalendlyEventListener](#usecalendlyeventlistener)
 
 #### InlineWidget
 
@@ -259,6 +262,10 @@ If you are using [Calendly's v2 api](https://developer.calendly.com/docs/api-doc
 
 - [Scheduled Event Schema](https://developer.calendly.com/docs/api-docs/reference/calendly-api/openapi.yaml/paths/~1scheduled_events~1%7Buuid%7D/get)
 - [Invitee Schema](https://developer.calendly.com/docs/api-docs/reference/calendly-api/openapi.yaml/paths/~1scheduled_events~1%7Bevent_uuid%7D~1invitees~1%7Binvitee_uuid%7D/get)
+
+#### Can I use react-calendly with Nextjs?
+
+Yes, see https://github.com/tcampb/react-calendly/issues/105 for additional details.
 
 ## Additional Resources
 

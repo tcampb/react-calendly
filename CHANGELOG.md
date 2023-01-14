@@ -1,5 +1,8 @@
 # Changelog
 
+## 4.1.1
+- `PopupWidget`, `PopupModal`, and `PopupButton` components will throw an error when opened without a `rootElement` prop (https://github.com/tcampb/react-calendly/issues/143).
+
 ## 4.1.0
 
 - Added `salesforce_uuid` prefill option (https://github.com/tcampb/react-calendly/pull/128).
