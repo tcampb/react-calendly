@@ -260,8 +260,8 @@ The [useCalendlyEventListener](https://tcampb.github.io/react-calendly/?path=/st
 
 If you are using [Calendly's v2 api](https://developer.calendly.com/docs/api-docs/docs/A-API-Getting-Started.md) you can reference the event/invitee URIs included in the event payload to retrieve additional information about the event and/or invitee record.
 
-- [Scheduled Event Schema](https://developer.calendly.com/docs/api-docs/reference/calendly-api/openapi.yaml/paths/~1scheduled_events~1%7Buuid%7D/get)
-- [Invitee Schema](https://developer.calendly.com/docs/api-docs/reference/calendly-api/openapi.yaml/paths/~1scheduled_events~1%7Bevent_uuid%7D~1invitees~1%7Binvitee_uuid%7D/get)
+- [Scheduled Event Schema](https://developer.calendly.com/api-docs/e2f95ebd44914-get-event)
+- [Invitee Schema](https://developer.calendly.com/api-docs/8305c0ccfac70-get-event-invitee)
 
 #### Can I use react-calendly with Nextjs?
 
