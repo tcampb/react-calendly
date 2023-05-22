@@ -14,6 +14,7 @@ export interface Props {
   utm?: Utm;
   pageSettings?: PageSettings;
   iframeTitle?: IframeTitle;
+  isOpen?: boolean;
 }
 
 class PopupWidget extends React.Component<Props, { isOpen: boolean }> {
@@ -21,11 +22,19 @@ class PopupWidget extends React.Component<Props, { isOpen: boolean }> {
     super(props);
 
     this.state = {
-      isOpen: false,
+      isOpen: !!props.isOpen,
     };
 
     this.onClick = this.onClick.bind(this);
     this.onClose = this.onClose.bind(this);
+  }
+
+  componentDidUpdate(prevProps: Readonly<Props>): void {
+    if (prevProps.isOpen !== this.props.isOpen) {
+      this.setState({
+        isOpen: !!this.props.isOpen,
+      });
+    }
   }
 
   onClick() {

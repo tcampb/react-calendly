@@ -13,6 +13,7 @@ export interface Props {
   styles?: React.CSSProperties | undefined;
   className?: string;
   iframeTitle?: IframeTitle;
+  isOpen?: boolean;
 }
 
 class PopupButton extends React.Component<Props, { isOpen: boolean }> {
@@ -20,11 +21,19 @@ class PopupButton extends React.Component<Props, { isOpen: boolean }> {
     super(props);
 
     this.state = {
-      isOpen: false,
+      isOpen: !!props.isOpen,
     };
 
     this.onClick = this.onClick.bind(this);
     this.onClose = this.onClose.bind(this);
+  }
+
+  componentDidUpdate(prevProps: Readonly<Props>): void {
+    if (prevProps.isOpen !== this.props.isOpen) {
+      this.setState({
+        isOpen: !!this.props.isOpen,
+      });
+    }
   }
 
   onClick(e: React.SyntheticEvent) {
