@@ -48,6 +48,11 @@ export type Utm = Optional<{
  */
 export type IframeTitle = string;
 
+/**
+ * @description LoadingSpinner is a React component that will be displayed while the Calendly iframe is loading. If no component is provided, the default Calendly loading spinner will be used.
+ */
+export type LoadingSpinner = React.FunctionComponent;
+
 export type PageSettings = Optional<{
   /**
    * @description Use this setting to hide your profile picture, name, event duration, location, and description when Calendly is embedded. This will help reduce duplicate information that you may already have on your web page.

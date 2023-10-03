@@ -1,11 +1,13 @@
 import * as React from "react";
 import * as ReactDom from "react-dom";
+import { LoadingSpinner } from "../../calendly";
 import ModalContent, { Props as ModalContentProps } from "./ModalContent";
 
 interface Props extends ModalContentProps {
   onModalClose: (e: React.MouseEvent<HTMLElement>) => void;
   open: boolean;
   rootElement: HTMLElement;
+  LoadingSpinner?: LoadingSpinner;
 }
 
 export default (props: Props) => {
