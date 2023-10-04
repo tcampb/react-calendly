@@ -1,6 +1,6 @@
 import * as React from "react";
 import "../../calendly-widget.css";
-import { PageSettings, Prefill, Utm, IframeTitle } from "../../calendly";
+import { PageSettings, Prefill, Utm, IframeTitle, LoadingSpinner } from "../../calendly";
 import Modal from "../PopupModal/Modal";
 
 export interface Props {
@@ -13,6 +13,7 @@ export interface Props {
   styles?: React.CSSProperties | undefined;
   className?: string;
   iframeTitle?: IframeTitle;
+  LoadingSpinner?: LoadingSpinner;
 }
 
 class PopupButton extends React.Component<Props, { isOpen: boolean }> {
