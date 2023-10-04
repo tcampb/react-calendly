@@ -19,60 +19,31 @@
     "component"
   ],
   "scripts": {
-    "test": "cross-env CI=1 react-scripts-ts test --env=jsdom",
-    "test:watch": "react-scripts-ts test --env=jsdom",
     "build": "rollup -c && tsc --emitDeclarationOnly",
     "start": "rollup -c -w",
-    "prepare": "npm run build",
-    "predeploy": "npm install && npm run build-storybook",
-    "deploy": "gh-pages -d storybook-static",
-    "storybook": "start-storybook -p 9001 -c .storybook ",
-    "build-storybook": "build-storybook"
+    "prepare": "npm run build"
   },
   "peerDependencies": {
     "react": ">=16.8.0",
     "react-dom": ">=16.8.0"
   },
   "devDependencies": {
-    "@rollup/plugin-typescript": "^2.1.0",
-    "@storybook/addon-actions": "^5.3.7",
-    "@storybook/addon-info": "^5.3.17",
-    "@storybook/addon-knobs": "^5.3.17",
-    "@storybook/addon-links": "^5.3.7",
-    "@storybook/addons": "^5.3.7",
-    "@storybook/cli": "^5.3.7",
-    "@storybook/preset-create-react-app": "^1.5.2",
-    "@storybook/react": "^5.3.7",
-    "@svgr/rollup": "^2.4.1",
-    "@types/jest": "^23.3.14",
-    "@types/node": "^13.9.5",
+    "@rollup/plugin-typescript": "^11.1.4",
     "@types/react": "^16.8.0",
     "@types/react-dom": "^16.8.0",
-    "babel-core": "^6.26.3",
-    "babel-loader": "^7.1.5",
-    "babel-runtime": "^6.26.0",
-    "cross-env": "^5.1.4",
-    "gh-pages": "^1.2.0",
-    "jest": "^24.9.0",
-    "mini-css-extract-plugin": "^0.9.0",
     "prettier": "2.0.2",
     "react": "^16.8.0",
-    "react-docgen-typescript-loader": "^3.7.1",
     "react-dom": "^16.8.0",
-    "react-scripts": "3.3.0",
-    "rollup": "^0.62.0",
-    "rollup-plugin-babel": "^3.0.7",
-    "rollup-plugin-commonjs": "^9.1.3",
-    "rollup-plugin-postcss": "^1.6.2",
-    "rollup-plugin-node-resolve": "^3.3.0",
-    "rollup-plugin-peer-deps-external": "^2.2.0",
-    "rollup-plugin-url": "^1.4.0",
-    "ts-jest": "^24.3.0",
-    "ts-loader": "^6.2.2",
+    "rollup": "^3.29.4",
     "typescript": "^4.0.5"
   },
   "files": [
     "dist",
     "typings"
-  ]
+  ],
+  "dependencies": {
+    "@rollup/plugin-commonjs": "^25.0.4",
+    "@rollup/plugin-node-resolve": "^15.2.1",
+    "tslib": "^2.6.2"
+  }
 }
