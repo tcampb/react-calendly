@@ -1,7 +1,8 @@
 const typescript = require("@rollup/plugin-typescript");
 const commonjs = require('@rollup/plugin-commonjs')
-// const resolve require('@rollup/plugin-node-resolv';
 const pkg = require("./package.json")
+const postcss = require('rollup-plugin-postcss');
+const external = require('rollup-plugin-peer-deps-external');
 
 module.exports = {
   input: "src/index.tsx",
@@ -19,5 +20,5 @@ module.exports = {
       sourcemap: true,
     },
   ],
-  plugins: [typescript(), commonjs()],
+  plugins: [external(), postcss(), typescript(), commonjs()],
 };
