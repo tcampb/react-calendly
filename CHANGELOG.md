@@ -1,5 +1,8 @@
 # Changelog
 
+## 4.2.0
+- All components now include an optional `LoadingSpinner` prop. This prop is a React component that will be rendered while the Calendly iframe is loading; the default Calendly loading spinner will be displayed if this property is not provided.
+
 ## 4.1.1
 - `PopupWidget`, `PopupModal`, and `PopupButton` components will throw an error when opened without a `rootElement` prop (https://github.com/tcampb/react-calendly/issues/143).
 

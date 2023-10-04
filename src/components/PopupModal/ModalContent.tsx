@@ -6,8 +6,9 @@ import {
   Utm,
   IframeTitle,
   formatCalendlyUrl,
+  LoadingSpinner,
 } from "../../calendly";
-import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
+import CalendlyLoadingSpinner from "../LoadingSpinner/LoadingSpinner";
 
 export interface Props {
   url: string;
@@ -15,6 +16,7 @@ export interface Props {
   utm?: Utm;
   pageSettings?: PageSettings;
   iframeTitle?: IframeTitle;
+  LoadingSpinner?: LoadingSpinner;
 }
 
 class ModalContent extends React.Component<Props, { isLoading: boolean }> {
@@ -42,6 +44,7 @@ class ModalContent extends React.Component<Props, { isLoading: boolean }> {
       utm: this.props.utm,
       embedType: "PopupWidget",
     });
+    const LoadingSpinner = this.props.LoadingSpinner || CalendlyLoadingSpinner;
 
     return (
       <>

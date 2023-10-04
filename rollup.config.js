@@ -1,12 +1,10 @@
-import typescript from "@rollup/plugin-typescript";
-import commonjs from "rollup-plugin-commonjs";
-import resolve from "rollup-plugin-node-resolve";
-import external from "rollup-plugin-peer-deps-external";
-import postcss from "rollup-plugin-postcss"
-import url from "rollup-plugin-url";
-import pkg from "./package.json";
+const typescript = require("@rollup/plugin-typescript");
+const commonjs = require('@rollup/plugin-commonjs')
+const pkg = require("./package.json")
+const postcss = require('rollup-plugin-postcss');
+const external = require('rollup-plugin-peer-deps-external');
 
-export default {
+module.exports = {
   input: "src/index.tsx",
   output: [
     {
@@ -22,5 +20,5 @@ export default {
       sourcemap: true,
     },
   ],
-  plugins: [external(), postcss(), url(), resolve(), typescript(), commonjs()],
+  plugins: [external(), postcss(), typescript(), commonjs()],
 };

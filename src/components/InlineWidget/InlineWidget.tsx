@@ -6,8 +6,9 @@ import {
   Utm,
   IframeTitle,
   formatCalendlyUrl,
+  LoadingSpinner,
 } from "../../calendly";
-import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
+import CalendlyLoadingSpinner from "../LoadingSpinner/LoadingSpinner";
 
 export interface Props {
   url: string;
@@ -16,6 +17,7 @@ export interface Props {
   styles?: React.CSSProperties | undefined;
   pageSettings?: PageSettings;
   iframeTitle?: IframeTitle;
+  LoadingSpinner?: LoadingSpinner;
 }
 
 const defaultStyles = {
@@ -48,6 +50,7 @@ class InlineWidget extends React.Component<Props, { isLoading: boolean }> {
       utm: this.props.utm,
       embedType: "Inline",
     });
+    const LoadingSpinner = this.props.LoadingSpinner || CalendlyLoadingSpinner;
 
     return (
       <div
