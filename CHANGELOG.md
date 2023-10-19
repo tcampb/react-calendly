@@ -1,5 +1,9 @@
 # Changelog
 
+## 4.2.1
+
+- Removes unused sourcemaps (https://github.com/tcampb/react-calendly/issues/169).
+
 ## 4.2.0
 - All components now include an optional `LoadingSpinner` prop. This prop is a React component that will be rendered while the Calendly iframe is loading; the default Calendly loading spinner will be displayed if this property is not provided.
 
