@@ -9,6 +9,7 @@ export type Prefill = Optional<{
   email: string;
   firstName: string;
   lastName: string;
+  phoneNumber: string;
   location: string;
   guests: string[];
   customAnswers: Optional<{
@@ -121,6 +122,7 @@ export const formatCalendlyUrl = ({
     guests,
     lastName,
     location,
+    phoneNumber,
     name,
   } = prefill;
 
@@ -147,6 +149,7 @@ export const formatCalendlyUrl = ({
     textColor ? `text_color=${textColor}` : null,
     hideGdprBanner ? `hide_gdpr_banner=1` : null,
     name ? `name=${encodeURIComponent(name)}` : null,
+    phoneNumber ? `phone_number=${encodeURIComponent(phoneNumber)}` : null,
     location ? `location=${encodeURIComponent(location)}` : null,
     firstName ? `first_name=${encodeURIComponent(firstName)}` : null,
     lastName ? `last_name=${encodeURIComponent(lastName)}` : null,

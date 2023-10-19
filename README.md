@@ -160,6 +160,7 @@ prefill={{
   firstName: 'Jon',
   lastName: 'Snow',
   name: 'Jon Snow',
+  phoneNumber: '+1234567890',
   guests: [
     'janedoe@example.com',
     'johndoe@example.com'
