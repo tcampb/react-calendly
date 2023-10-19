@@ -1,5 +1,9 @@
 # Changelog
 
+## 4.3.0
+
+- Added `smsReminderNumber` prefill option (https://github.com/tcampb/react-calendly/pull/171).
+
 ## 4.2.1
 
 - Removes unused sourcemaps (https://github.com/tcampb/react-calendly/issues/169).
