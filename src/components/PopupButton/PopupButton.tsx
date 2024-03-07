@@ -14,6 +14,7 @@ export interface Props {
   className?: string;
   iframeTitle?: IframeTitle;
   LoadingSpinner?: LoadingSpinner;
+  icon?: React.ReactNode;
 }
 
 class PopupButton extends React.Component<Props, { isOpen: boolean }> {
@@ -51,6 +52,7 @@ class PopupButton extends React.Component<Props, { isOpen: boolean }> {
           style={this.props.styles || {}}
           className={this.props.className || ""}
         >
+          {this.props.icon ? this.props.icon : null}
           {this.props.text}
         </button>
         <Modal
