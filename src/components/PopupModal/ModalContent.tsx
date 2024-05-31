@@ -42,7 +42,7 @@ class ModalContent extends React.Component<Props, { isLoading: boolean }> {
       pageSettings: this.props.pageSettings,
       prefill: this.props.prefill,
       utm: this.props.utm,
-      embedType: "PopupWidget",
+      embedType: "Inline",
     });
     const LoadingSpinner = this.props.LoadingSpinner || CalendlyLoadingSpinner;
 

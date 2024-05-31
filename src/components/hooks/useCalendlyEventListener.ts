@@ -38,11 +38,23 @@ export type ProfilePageViewedEvent = MessageEvent<{
   payload: {};
 }>;
 
+export type PageHeightResizeEvent = MessageEvent<{
+  event: CalendlyEvent.PAGE_HEIGHT;
+  payload: {
+    /**
+       * @description The height of the Calendly scheduling page in pixels.
+       * @example 1200px
+       */
+    height: string;
+  };
+}>;
+
 export type CalendlyEventHandlers = {
   onDateAndTimeSelected?: (e: DateAndTimeSelectedEvent) => any;
   onEventScheduled?: (e: EventScheduledEvent) => any;
   onEventTypeViewed?: (e: EventTypeViewedEvent) => any;
   onProfilePageViewed?: (e: ProfilePageViewedEvent) => any;
+  onPageHeightResize?: (e: PageHeightResizeEvent) => any;
 };
 
 const EVENT_NAME = "message";
@@ -55,6 +67,7 @@ export default function useCalendlyEventListener(
     onEventScheduled,
     onEventTypeViewed,
     onProfilePageViewed,
+    onPageHeightResize
   } = eventHandlers || {};
 
   React.useEffect(() => {
@@ -69,6 +82,8 @@ export default function useCalendlyEventListener(
         onEventTypeViewed && onEventTypeViewed(e);
       } else if (eventName === CalendlyEvent.PROFILE_PAGE_VIEWED) {
         onProfilePageViewed && onProfilePageViewed(e);
+      } else if (eventName === CalendlyEvent.PAGE_HEIGHT) {
+        onPageHeightResize && onPageHeightResize(e);
       }
     };
 

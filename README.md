@@ -116,6 +116,7 @@ const App = () => {
     onDateAndTimeSelected: () => console.log("onDateAndTimeSelected"),
     onEventTypeViewed: () => console.log("onEventTypeViewed"),
     onEventScheduled: (e) => console.log(e.data.payload),
+    onPageHeightResize: (e) => console.log(e.data.payload.height),
   });
 
   return (

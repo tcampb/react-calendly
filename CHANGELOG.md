@@ -1,5 +1,15 @@
 # Changelog
 
+## 4.3.1
+
+- Added `onPageHeightResize` option to `useCalendlyEventListener` hook. This function is called when the Calendly scheduling page's height changes. The event payload includes the new height in pixels.
+
+https://github.com/tcampb/react-calendly/issues/174
+https://github.com/tcampb/react-calendly/issues/137
+https://github.com/tcampb/react-calendly/issues/133
+https://github.com/tcampb/react-calendly/issues/15
+https://github.com/tcampb/react-calendly/issues/145
+
 ## 4.3.0
 
 - Added `smsReminderNumber` prefill option (https://github.com/tcampb/react-calendly/pull/171).
