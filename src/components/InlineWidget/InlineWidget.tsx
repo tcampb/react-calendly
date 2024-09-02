@@ -18,6 +18,7 @@ export interface Props {
   pageSettings?: PageSettings;
   iframeTitle?: IframeTitle;
   LoadingSpinner?: LoadingSpinner;
+  resize?: boolean;
 }
 
 const defaultStyles = {
@@ -51,6 +52,11 @@ class InlineWidget extends React.Component<Props, { isLoading: boolean }> {
       embedType: "Inline",
     });
     const LoadingSpinner = this.props.LoadingSpinner || CalendlyLoadingSpinner;
+    
+    const attrs = {};
+    if (this.props.resize) {
+      attrs['data-resize'] = "true";
+    }
 
     return (
       <div
@@ -65,6 +71,7 @@ class InlineWidget extends React.Component<Props, { isLoading: boolean }> {
           title={this.props.iframeTitle || "Calendly Scheduling Page"}
           onLoad={this.onLoad}
           src={src}
+          {...attrs}
         ></iframe>
       </div>
     );
