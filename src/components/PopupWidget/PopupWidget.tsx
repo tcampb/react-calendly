@@ -15,6 +15,7 @@ export interface Props {
   pageSettings?: PageSettings;
   iframeTitle?: IframeTitle;
   LoadingSpinner?: LoadingSpinner;
+  persistent?: boolean;
 }
 
 class PopupWidget extends React.Component<Props, { isOpen: boolean }> {
@@ -61,6 +62,7 @@ class PopupWidget extends React.Component<Props, { isOpen: boolean }> {
           open={this.state.isOpen}
           onModalClose={this.onClose}
           rootElement={this.props.rootElement}
+          persistent={this.props.persistent}
         />
       </div>
     );

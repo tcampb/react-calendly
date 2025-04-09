@@ -14,6 +14,7 @@ export interface Props {
   className?: string;
   iframeTitle?: IframeTitle;
   LoadingSpinner?: LoadingSpinner;
+  persistent?: boolean;
 }
 
 class PopupButton extends React.Component<Props, { isOpen: boolean }> {
@@ -58,6 +59,7 @@ class PopupButton extends React.Component<Props, { isOpen: boolean }> {
           open={this.state.isOpen}
           onModalClose={this.onClose}
           rootElement={this.props.rootElement}
+          persistent={this.props.persistent}
         />
       </>
     );

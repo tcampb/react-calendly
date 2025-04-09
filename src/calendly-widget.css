@@ -56,6 +56,7 @@
     left:50%;
     -webkit-transform:translateY(-50%) translateX(-50%);
     transform:translateY(-50%) translateX(-50%);
+    transform-origin: center center;
     width:80%;
     min-width:900px;
     max-width:1000px;
@@ -190,4 +191,21 @@
         -webkit-transform:scale(1);
         transform:scale(1)
     }
+}
+
+.calendly-overlay--bounce .calendly-popup {
+  animation: calendly-bounce 0.3s ease-out;
+  transform-origin: center center;
+}
+
+@-webkit-keyframes calendly-bounce {
+  0% { -webkit-transform: translateY(-50%) translateX(-50%) scale(1); }
+  50% { -webkit-transform: translateY(-50%) translateX(-50%) scale(1.03); }
+  100% { -webkit-transform: translateY(-50%) translateX(-50%) scale(1); }
+}
+
+@keyframes calendly-bounce {
+  0% { transform: translateY(-50%) translateX(-50%) scale(1); }
+  50% { transform: translateY(-50%) translateX(-50%) scale(1.03); }
+  100% { transform: translateY(-50%) translateX(-50%) scale(1); }
 }
