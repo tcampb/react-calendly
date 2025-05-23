@@ -1,5 +1,14 @@
 # Changelog
 
+## 4.4.0
+
+- Added `className` option to `InlineWidget` component.
+- Removed SMS prefill option since it is no longer supported by Calendly.
+
+https://github.com/tcampb/react-calendly/issues/194
+https://github.com/tcampb/react-calendly/issues/186
+
+
 ## 4.3.1
 
 - Added `onPageHeightResize` option to `useCalendlyEventListener` hook. This function is called when the Calendly scheduling page's height changes. The event payload includes the new height in pixels.

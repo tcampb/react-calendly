@@ -12,10 +12,12 @@
   line-height: 1.2em;
 }
 
-.calendly-inline-widget iframe {
+.calendly-inline-widget {
   min-width: 320px;
   height: 630px;
 }
+
+.calendly-inline-widget iframe,
 .calendly-badge-widget iframe,
 .calendly-overlay iframe {
   display: inline;
