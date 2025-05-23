@@ -18,12 +18,10 @@ export interface Props {
   pageSettings?: PageSettings;
   iframeTitle?: IframeTitle;
   LoadingSpinner?: LoadingSpinner;
+  className?: string;
 }
 
-const defaultStyles = {
-  minWidth: "320px",
-  height: "630px",
-};
+const defaultClassName = "calendly-inline-widget";
 
 class InlineWidget extends React.Component<Props, { isLoading: boolean }> {
   constructor(props: Props) {
@@ -54,8 +52,8 @@ class InlineWidget extends React.Component<Props, { isLoading: boolean }> {
 
     return (
       <div
-        className="calendly-inline-widget"
-        style={this.props.styles || defaultStyles}
+        className={this.props.className || defaultClassName}
+        style={this.props.styles || {}}
       >
         {this.state.isLoading && <LoadingSpinner />}
         <iframe
