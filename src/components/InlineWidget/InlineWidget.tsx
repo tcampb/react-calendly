@@ -19,6 +19,7 @@ export interface Props {
   iframeTitle?: IframeTitle;
   LoadingSpinner?: LoadingSpinner;
   className?: string;
+  containerDivProps?: React.HTMLAttributes<HTMLDivElement>;
 }
 
 const defaultClassName = "calendly-inline-widget";
@@ -54,6 +55,7 @@ class InlineWidget extends React.Component<Props, { isLoading: boolean }> {
       <div
         className={this.props.className || defaultClassName}
         style={this.props.styles || {}}
+        {...this.props.containerDivProps}
       >
         {this.state.isLoading && <LoadingSpinner />}
         <iframe

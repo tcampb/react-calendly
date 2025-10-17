@@ -199,6 +199,16 @@ utm={{
 }}
 ```
 
+#### Additional Container Div Props
+
+Calendly allows you to add a `data-resize` attribute to the container div for inline embeds to enable dynamic height resizing. You can pass this attribute, and any other valid HTML attributes, via the `containerDivProps` prop:
+
+```jsx
+containerDivProps={{
+  "data-resize": "true"
+}}
+```
+
 ## FAQ
 
 #### Why are my page settings not working?
