@@ -7,7 +7,7 @@
 
 <p>
   <strong>Are you looking to fully customize your React booking page?</strong><br/>
-  <span>Ship a React booking page you control - with https://components.calforce.pro</span>
+  <span>Ship a React booking page you control - with https://components.calforce.pro and <a href="https://github.com/tcampb/react-calendly-scheduler">react-calendly-scheduler</a></span>
 </p>
 
 ---
